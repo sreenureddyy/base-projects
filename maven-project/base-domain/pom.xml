@@ -15,10 +15,8 @@
 	<name>base-domain</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<project.build.sourceEncoding>
-			UTF-8
-		</project.build.sourceEncoding>
 		<project-version>1.0</project-version>
+		<hibernate-version>3.6.5.Final</hibernate-version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -27,12 +25,36 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		
-		<!-- Project dependencies -->
+
+		<!-- Project dependencies starts-->
 		<dependency>
 			<groupId>com.sree.common</groupId>
 			<artifactId>common</artifactId>
 			<version>${project-version}</version>
 		</dependency>
+		<!-- Project dependencies ends-->
+
+		<!-- Hibernate Dependencies starts -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${hibernate-version}</version>
+		</dependency>
+		<!-- Hibernate Dependencies ends -->
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>hibernate-repository</id>
+			<name>Hibernate Repository</name>
+			<url>
+				https://repository.jboss.org/nexus/content/repositories/releases
+			</url>
+		</repository>
+	</repositories>
 </project>
