@@ -15,20 +15,19 @@
 	<name>base-dao</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<project.build.sourceEncoding>
-			UTF-8
-		</project.build.sourceEncoding>
 		<project-version>1.0</project-version>
+
+		<!-- for Alhpa versions it was just 'ALPHA2' -->
+		<org.richfaces.bom.version>
+			4.0.0.Final
+		</org.richfaces.bom.version>
+
+		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring-security.version>3.0.0.M1</spring-security.version>
+		<hibernate-version>3.6.5.Final</hibernate-version>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<!-- Project dependencies -->
+		<!-- Project dependencies starts -->
 		<dependency>
 			<groupId>com.sree.common</groupId>
 			<artifactId>common</artifactId>
@@ -39,5 +38,70 @@
 			<artifactId>base-domain</artifactId>
 			<version>${project-version}</version>
 		</dependency>
+		<!-- Project dependencies ends -->
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.16</version>
+		</dependency>
+
+		<!-- Spring dependencies starts-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- Spring dependencies ends-->
+
+		<!-- Hibernate Dependencies starts -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${hibernate-version}</version>
+		</dependency>
+		<!-- Hibernate Dependencies ends -->
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>hibernate-repository</id>
+			<name>Hibernate Repository</name>
+			<url>
+				https://repository.jboss.org/nexus/content/repositories/releases
+			</url>
+		</repository>
+	</repositories>
 </project>
