@@ -1,4 +1,4 @@
-package com.sree.utils;
+package com.sree.common.utils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

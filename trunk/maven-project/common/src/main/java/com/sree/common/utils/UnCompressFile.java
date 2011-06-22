@@ -1,4 +1,4 @@
-package com.sree.utils;
+package com.sree.common.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
