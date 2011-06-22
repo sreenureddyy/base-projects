@@ -44,6 +44,14 @@
               description="User database that can be updated and saved"
               factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
               pathname="conf/tomcat-users.xml" />
+			  
+	<Resource name="jdbc/mysqldb" type="javax.sql.DataSource"
+			maxActive="50" maxIdle="20" maxWait="5000" validationQuery="select 1 from dual"
+			removeAbandoned="true" logAbandoned="true"
+			driverClassName="com.mysql.jdbc.Driver"
+			username="root" password="1250"
+			url="jdbc:mysql://localhost:3306/project"/>
+			
   </GlobalNamingResources>
 
   <!-- A "Service" is a collection of one or more "Connectors" that share
@@ -136,6 +144,11 @@
                prefix="localhost_access_log." suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" resolveHosts="false"/>
 
+		<Context path="/project" reloadable="false" debug="0" docBase="project" antiResourceLocking="true">
+			<ResourceLink name="jdbc/mysqldb"
+                       type="javax.sql.DataSource"
+                       global="jdbc/mysqldb"/>
+		</Context>
       </Host>
     </Engine>
   </Service>
