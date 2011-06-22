@@ -29,7 +29,6 @@
     <module>base-service</module>
     <module>base-web</module>
     <module>project</module>
-    <module>start-project</module>
   </modules>
   
 </project>
