@@ -1,4 +1,4 @@
-package com.sree.utils;
+package com.sree.common.utils;
 
 @SuppressWarnings("unused")
 public class SystemType {

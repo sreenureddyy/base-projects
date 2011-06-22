@@ -1,4 +1,4 @@
-package com.sree.utils;
+package com.sree.common.utils;
 
 public class SystemProperties
 {

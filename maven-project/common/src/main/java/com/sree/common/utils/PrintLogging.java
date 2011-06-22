@@ -1,4 +1,4 @@
-package com.sree.utils;
+package com.sree.common.utils;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.ConsoleAppender;
