@@ -17,10 +17,12 @@
 	<properties>
 		<project-version>1.0</project-version>
 		<spring.version>3.0.5.RELEASE</spring.version>
-		<spring-security.version>3.0.0.M1</spring-security.version>
+		<org.springsecurity-version>
+			3.0.5.RELEASE
+		</org.springsecurity-version>
 	</properties>
 
-	
+
 	<dependencies>
 		<!-- Project dependencies starts-->
 		<dependency>
@@ -75,6 +77,35 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<!-- Spring dependencies ends -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springsecurity-version}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${org.springsecurity-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springsecurity-version}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
 	</dependencies>
 </project>
