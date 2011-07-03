@@ -59,9 +59,8 @@
 			expression="org.springframework.stereotype.Controller"
 			type="annotation" />
 	</context:component-scan>
-
+	
 	<bean id="userAuthentication"
 		class="com.sree.base.service.security.UserAuthentication">
 	</bean>
-
 </beans>
