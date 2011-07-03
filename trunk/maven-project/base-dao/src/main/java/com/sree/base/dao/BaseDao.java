@@ -83,5 +83,5 @@ public class BaseDao implements IBaseDao {
 	public Object find(Class clazz, Long id) {
 		return getSession().get(clazz, id);
 	}
-
+		
 }
