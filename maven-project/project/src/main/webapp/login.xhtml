@@ -8,29 +8,23 @@
 <h:head>
 </h:head>
 <h:body>
-	<center>
 	<h1>Welcome To Sree Project Demo</h1>
-	<rich:panel header="Login">
+	<rich:panel id="panel">
+		<f:facet name="header">
+			<h:outputText value="User Login" />
+		</f:facet>
 		<form name="form"
 			action="#{facesContext.externalContext.requestContextPath}/j_spring_security_check"
-			method="post" style="float: right; vertical-align: middle;"><h:messages
-			errorClass="errorMessage" /> <h:panelGrid>
+			method="post"><h:messages errorClass="errorMessage" /> <h:panelGrid>
+			<h:outputText value="Username" />
+			<h:inputText id="j_username" required="true" value="sree" />
 
-			<h:panelGroup>
-				<h:outputText value="Username" />
-				<h:inputText id="j_username" required="true" value="sree" />
-			</h:panelGroup>
+			<h:outputText value="Password" />
+			<h:inputSecret id="j_password" required="true" redisplay="true"
+				value="reddy" />
 
-			<h:panelGroup>
-				<h:outputText value="Password" />
-				<h:inputSecret id="j_password" required="true" redisplay="true"
-					value="reddy" />
-			</h:panelGroup>
-
-			<h:panelGroup>
-				<input name="submit" type="submit" class="buttonbg" value="Sign In" />
-			</h:panelGroup>
+			<input name="submit" type="submit" class="buttonbg" value="Sign In" />
 		</h:panelGrid></form>
-	</rich:panel></center>
+	</rich:panel>
 </h:body>
 </html>
