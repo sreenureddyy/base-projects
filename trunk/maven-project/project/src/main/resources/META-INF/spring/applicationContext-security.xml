@@ -8,7 +8,7 @@
 
 	<security:http auto-config="true" access-denied-page="/login.jsf">
 		<security:intercept-url pattern="/pages/**"
-			access="ROLE_ALLACCESS, ROLE_URLACCESS" />
+			access="ROLE_ALLACCESS" />
 		<security:intercept-url pattern="/login.jsf*" filters="none"
 			access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
