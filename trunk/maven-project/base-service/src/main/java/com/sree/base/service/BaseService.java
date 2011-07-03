@@ -19,6 +19,7 @@ import com.sree.base.dao.IBaseDao;
 		IntegrationServiceException.class, DomainValidationException.class,
 		BaseException.class })
 @Service("baseService")
+@SuppressWarnings("unchecked")
 public class BaseService implements IBaseService {
 	@Autowired
 	private IBaseDao baseDao;
