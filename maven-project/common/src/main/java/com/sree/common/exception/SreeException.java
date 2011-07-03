@@ -8,7 +8,7 @@ package com.sree.common.exception;
  *
  */
 @SuppressWarnings("serial")
-public class SreeException extends Exception {
+public class SreeException extends BaseException {
 	
 	public SreeException(){
 		super();
