@@ -41,7 +41,6 @@ public class UserAuthentication implements UserDetailsService {
 		log.info("Log in User name :: " + username);
 		List<User> userList = baseService.find("findUserByUserName", username);
 		List<Authority> userAuthorities = baseService.find("getUserAuthorities", username);
-		List<String> usernames = baseService.find("getusers");
 		
 		if (userList.size() == 0 || userAuthorities.size() == 0) {
 			throw new UsernameNotFoundException(username + " not found");
