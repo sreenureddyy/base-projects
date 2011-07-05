@@ -4,19 +4,18 @@
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	<persistence-unit name="sree" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<!-- Named JPQL queries per entity, but any other organization is possible  -->
+		<!-- Named JPQL queries per entity, but any other organization is possible -->
 		<mapping-file>META-INF/base-queries.xml</mapping-file>
-		<jar-file>WEB-INF/lib/*.jar</jar-file>
+		<jar-file>classpath*:WEB-INF/lib/*.jar</jar-file>
+		<class>com.sree.base.domain.User</class>
 		<properties>
 			<!-- 2nd level cache -->
-			<property name="hibernate.cache.provider_class"
-				value="org.hibernate.cache.EhCacheProvider" />
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.EhCacheProvider" />
 			<property name="hibernate.cache.provider_configuration"
 				value="ehcache.xml" />
 			<property name="hibernate.cache.user_second_level_cache"
 				value="true" />
-			<property name="hibernate.cache.user_query_cache"
-				value="true" />
+			<property name="hibernate.cache.user_query_cache" value="true" />
 			<property name="hibernate.generate_statistics" value="true" />
 			<property name="hibernate.cache.user_structured_entries"
 				value="true" />
