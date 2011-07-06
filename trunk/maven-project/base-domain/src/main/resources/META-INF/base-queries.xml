@@ -6,4 +6,11 @@
 	<query name="getusers">
 		<![CDATA[ select user.username from com.sree.base.domain.User user where user.id = 1]]>
 	</query>
+	<!-- query name="getUserAuthorities">
+		<![CDATA[ select authority.id from UserAuthority as userAuthority 
+					left join userAuthority.authority as authority 
+					left join userAuthority.user as user 
+						where user.username = ?]]>
+	</query-->
+	
 </hibernate-mapping>
