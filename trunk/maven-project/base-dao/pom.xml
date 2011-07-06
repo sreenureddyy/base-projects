@@ -28,6 +28,12 @@
 		<hibernate-version>3.6.5.Final</hibernate-version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		
 		<!-- Project dependencies starts -->
 		<dependency>
 			<groupId>com.sree.common</groupId>
