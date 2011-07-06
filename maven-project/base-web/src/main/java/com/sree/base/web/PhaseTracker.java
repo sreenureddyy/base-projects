@@ -7,6 +7,7 @@ import javax.faces.event.PhaseListener;
 import org.richfaces.log.LogFactory;
 import org.richfaces.log.Logger;
 
+@SuppressWarnings("unchecked")
 public class PhaseTracker implements PhaseListener {
 	private static final long serialVersionUID = 6358081870120864332L;
 	private Logger logger = LogFactory.getLogger(PhaseTracker.class);

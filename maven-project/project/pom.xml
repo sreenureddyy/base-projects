@@ -40,16 +40,22 @@
 						<configuration>
 							<tasks>
 								<echo>
-									ANT TASK - copying files to the junit testing folder....
+									ANT TASK - copying files to the
+									junit testing folder....
 								</echo>
 								<copy todir="${basedir}/target/classes"
 									overwrite="true">
 									<fileset
-										dir="${basedir}/target/project/"
-										includes="WEB-INF/lib/base-*.*" />
+										dir="${basedir}/target/project/">
+										<include
+											name="WEB-INF/lib/base-*.*" />
+										<!-- include
+											name="WEB-INF/*.properties" /-->
+									</fileset>
 								</copy>
 								<echo>
-									ANT TASK - Deploying war to Tomcat...
+									ANT TASK - Deploying war to
+									Tomcat...
 								</echo>
 								<copy
 									file="${basedir}/target/project.war"
@@ -69,12 +75,19 @@
 
 	<dependencies>
 
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+
 		<!-- Project dependencies starts-->
 		<dependency>
 			<groupId>com.sree.common</groupId>
 			<artifactId>common</artifactId>
 			<version>${project-version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.sree.base.domain</groupId>
 			<artifactId>base-domain</artifactId>
