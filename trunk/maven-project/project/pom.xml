@@ -29,6 +29,44 @@
 		<hibernate-version>3.6.5.Final</hibernate-version>
 	</properties>
 
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<configuration>
+							<tasks>
+								<echo>
+									ANT TASK - copying files to the junit testing folder....
+								</echo>
+								<copy todir="${basedir}/target/classes"
+									overwrite="true">
+									<fileset
+										dir="${basedir}/target/project/"
+										includes="WEB-INF/lib/base-*.*" />
+								</copy>
+								<echo>
+									ANT TASK - Deploying war to Tomcat...
+								</echo>
+								<copy
+									file="${basedir}/target/project.war"
+									todir="${env.TOMCAT_HOME}/webapps" />
+								<delete
+									dir="${env.TOMCAT_HOME}/webapps/project" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 	<dependencies>
 
 		<!-- Project dependencies starts-->
