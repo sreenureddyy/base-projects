@@ -16,10 +16,10 @@ import org.springframework.security.core.GrantedAuthority;
  * @author YSReddi
  * 
  */
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "AUTHORITY")
-public class Authority implements GrantedAuthority {
+@SuppressWarnings("serial")
+public class Authority extends BaseDomain implements GrantedAuthority {
 	@Column(name = "AUTHORITY_ID")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
