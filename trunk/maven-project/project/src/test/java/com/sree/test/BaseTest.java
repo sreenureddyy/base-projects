@@ -20,6 +20,6 @@ import com.sree.base.service.IBaseService;
 		"classpath:/META-INF/spring/applicationContext-security.xml",
 		"classpath:/META-INF/spring/applicationContext-spring.xml" })
 public class BaseTest {
-	@Autowired  
+	@Autowired
 	IBaseService baseService;
 } 
