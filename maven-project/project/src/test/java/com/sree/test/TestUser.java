@@ -15,11 +15,11 @@ import org.junit.Test;
 @SuppressWarnings("unchecked")
 public class TestUser extends BaseTest {
 	private Logger log = Logger.getLogger(TestUser.class);
+
 	@Test
 	public void testCase() {
 		List<String> usernames = baseService.find("getusers");
 		log.info(usernames.size());
 		log.info(usernames.get(0));
-	} 
+	}
 }
-    
