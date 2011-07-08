@@ -49,7 +49,7 @@
 			maxActive="50" maxIdle="20" maxWait="5000" validationQuery="select 1 from dual"
 			removeAbandoned="true" logAbandoned="true"
 			driverClassName="com.mysql.jdbc.Driver"
-			username="root" password=""
+			username="sree" password="sree"
 			url="jdbc:mysql://localhost:3306/project"/>
 			
   </GlobalNamingResources>
