@@ -22,4 +22,4 @@ import com.sree.base.service.IBaseService;
 public class BaseTest {
 	@Autowired
 	IBaseService baseService;
-} 
+}

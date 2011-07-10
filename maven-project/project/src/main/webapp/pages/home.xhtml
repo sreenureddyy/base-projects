@@ -17,7 +17,8 @@
 		<a title="Sign Out" style="text-decoration: none;"
 			href="#{facesContext.externalContext.requestContextPath}/spring/logout">Sign
 		Out</a>
-
+		<h:commandButton value="TestJMS"
+			action="#{sendMessageBean.sendMessage}"></h:commandButton>
 	</h:form></center>
 </h:body>
 </html>
