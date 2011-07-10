@@ -16,9 +16,9 @@ import com.sree.base.service.IBaseService;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
-		"classpath:/META-INF/spring/springContext-Test.xml",
-		"classpath:/META-INF/spring/applicationContext-security.xml",
-		"classpath:/META-INF/spring/applicationContext-spring.xml" })
+		"/META-INF/spring/springContext-Test.xml",
+		"/META-INF/spring/applicationContext-security.xml",
+		"/META-INF/spring/applicationContext-spring.xml" })
 public class BaseTest {
 	@Autowired
 	IBaseService baseService;

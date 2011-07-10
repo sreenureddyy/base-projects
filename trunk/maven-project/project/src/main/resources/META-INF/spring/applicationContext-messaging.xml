@@ -33,6 +33,14 @@
 		<property name="connectionFactory" ref="connectionFactory" />
 		<property name="pubSubDomain" value="true" />
 	</bean>
+	
+	<bean id="alertSubscriber"
+		class="com.sree.base.service.jms.BaseSubscriber">
+	</bean>
+	
+	<bean id="basePublisher"
+		class="com.sree.base.service.jms.BasePublisher">
+	</bean>
 
 	<jms:listener-container connection-factory="connectionFactory"
 		destination-type="topic">
