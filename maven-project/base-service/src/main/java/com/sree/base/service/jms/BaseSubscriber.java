@@ -7,11 +7,7 @@ import javax.jms.TextMessage;
 
 import org.apache.activemq.command.ActiveMQTextMessage;
 import org.apache.log4j.Logger;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-//import com.sree.sms.SmsMessage;
-//import com.sree.sms.Way2SmsUtil;
 
 /**
  * Abstract Implementation of the JMS Subscriber
@@ -19,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Author: Sree
  */
 @Transactional(rollbackFor = { Exception.class })
-@Service("alertSubscriber")
+//@Service("alertSubscriber")
 public class BaseSubscriber implements IBaseSubscriber {
 
 	protected Logger logger = Logger.getLogger(this.getClass());
