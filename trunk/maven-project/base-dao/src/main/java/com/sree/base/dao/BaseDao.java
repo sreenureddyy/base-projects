@@ -15,7 +15,6 @@ import org.springframework.stereotype.Repository;
 import com.sree.base.domain.User;
 
 @Repository("baseDao")
-@SuppressWarnings("unchecked")
 public class BaseDao implements IBaseDao {
 
 	private static final Logger log = Logger.getLogger(BaseDao.class);
@@ -62,7 +61,6 @@ public class BaseDao implements IBaseDao {
 		return find(queryName, new Object[]{});
 	}
 
-	@Override
 	public List<User> find(int firstRow, int numberOfRows, String sortField,
 			boolean descending, Class clazz) {
 		log.info("FirstRow :: " + firstRow + " NumberOfRows :: "
