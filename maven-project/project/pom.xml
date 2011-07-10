@@ -65,8 +65,6 @@
 										dir="${basedir}/target/project/">
 										<include
 											name="WEB-INF/lib/base-*.*" />
-										<include
-											name="WEB-INF/lib/slf4j*.jar" />
 									</fileset>
 								</copy>
 								<echo>
