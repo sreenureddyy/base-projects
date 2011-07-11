@@ -57,7 +57,8 @@
 						<configuration>
 							<tasks>
 								<echo>
-									ANT TASK - copying files to the junit testing folder....
+									ANT TASK - copying files to the
+									junit testing folder....
 								</echo>
 								<copy todir="${basedir}/target/classes"
 									overwrite="true">
@@ -68,7 +69,8 @@
 									</fileset>
 								</copy>
 								<echo>
-									ANT TASK - Deploying war to	Tomcat...
+									ANT TASK - Deploying war to
+									Tomcat...
 								</echo>
 								<copy
 									file="${basedir}/target/project.war"
@@ -131,7 +133,12 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.4.2</version>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.1</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.el</groupId>
