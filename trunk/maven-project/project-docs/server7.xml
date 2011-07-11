@@ -51,6 +51,16 @@
 			driverClassName="com.mysql.jdbc.Driver"
 			username="sree" password="sree"
 			url="jdbc:mysql://localhost:3306/project"/>
+	
+	<Resource
+			name="jms/ConnectionFactory"
+			auth="Container"
+			type="org.apache.activemq.ActiveMQConnectionFactory"
+			description="JMS Connection Factory"
+			factory="org.apache.activemq.jndi.JNDIReferenceFactory"
+			brokerURL="vm://localhost"
+			brokerName="LocalActiveMQBroker"
+			useEmbeddedBroker="false"/>
 			
   </GlobalNamingResources>
 
@@ -148,6 +158,10 @@
 			<ResourceLink name="jdbc/mysqldb"
                        type="javax.sql.DataSource"
                        global="jdbc/mysqldb"/>
+			
+			<ResourceLink name="jms/ConnectionFactory"
+                       type="org.apache.activemq.ActiveMQConnectionFactory"
+                       global="jms/ConnectionFactory"/>
 		</Context>
 
       </Host>
