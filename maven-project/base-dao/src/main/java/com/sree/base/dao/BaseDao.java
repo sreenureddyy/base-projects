@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.sree.base.domain.User;
 
 @Repository("baseDao")
+@SuppressWarnings("unchecked")
 public class BaseDao implements IBaseDao {
 
 	private static final Logger log = Logger.getLogger(BaseDao.class);
