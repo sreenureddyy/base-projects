@@ -1,16 +1,11 @@
 package com.sree.base.service.webservice;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
-import javax.jws.HandlerChain;
 import javax.jws.WebService;
 
 @WebService(endpointInterface = "com.sree.base.service.webservice.MyService")
-@HandlerChain(file = "handlers.xml")
+//@HandlerChain(file = "handlers.xml")
 public class MyServiceImpl implements MyService {
 
-    @Override
     public String sayHello(String name) {
         if (name == null || name.trim().length() <= 0)
             throw new IllegalArgumentException("name");
@@ -37,8 +32,7 @@ public class MyServiceImpl implements MyService {
         return "<greeting>" + "Hello! " + data.substring(data.indexOf(">") + 1, data.lastIndexOf("<")) + "</greeting>";
     }
 */
-    @Override
-    public String getPurchaseOrder() {
+   /* public String getPurchaseOrder() {
         StringBuilder data = new StringBuilder(2048);
         try {
             BufferedReader fReader = new BufferedReader(new InputStreamReader(MyServiceImpl.class
@@ -60,7 +54,7 @@ public class MyServiceImpl implements MyService {
 	public String xmlData(String data) {
 		return getPurchaseOrder();
 	}
-
+*/
 	//@Override
 	/*public void sendPerson(Person person) {
 		System.out.println("--------------------->>>>>>>>>>>"+person.getName());

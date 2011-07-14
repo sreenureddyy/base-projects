@@ -8,7 +8,7 @@ import org.codehaus.jra.Post;
 import org.codehaus.jra.Get;
 
 
-@WebService(targetNamespace = "http://demo.order")
+@WebService
 public interface OrderProcess {
 
 	// Get all the orders
