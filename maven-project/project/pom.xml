@@ -300,7 +300,7 @@
 			<artifactId>cxf-rt-bindings-http</artifactId>
 			<version>2.4.1</version>
 		</dependency>
-		<dependency>
+		<!--dependency>
 			<groupId>com.sun.xml.ws</groupId>
 			<artifactId>jaxws-rt</artifactId>
 			<scope>compile</scope>
@@ -311,7 +311,7 @@
 					<artifactId>istack-commons-runtime</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency-->
 
 		<!-- CFX Dependencies starts -->
 
