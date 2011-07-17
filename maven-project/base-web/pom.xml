@@ -152,6 +152,30 @@
 			<version>1.2.16</version>
 		</dependency>
 
+		<!-- JFree Charts -->
+		<dependency>
+			<groupId>jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.jsf-comp</groupId>
+			<artifactId>chartcreator</artifactId>
+			<version>1.2.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.faces</groupId>
+					<artifactId>jsf-impl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.faces</groupId>
+					<artifactId>jsf-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- JFree Charts Ends-->
+
 	</dependencies>
 
 	<dependencyManagement>
