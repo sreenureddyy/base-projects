@@ -346,8 +346,25 @@
 			</exclusions>
 		</dependency>
 		<!-- JFree Charts Ends-->
-		
 
+		<!-- Drools -->
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-core</artifactId>
+			<version>5.2.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-decisiontables</artifactId>
+			<version>5.2.0.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<!-- Drools Ends -->
 	</dependencies>
 
 	<dependencyManagement>
