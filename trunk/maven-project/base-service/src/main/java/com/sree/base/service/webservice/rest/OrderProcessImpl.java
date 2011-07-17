@@ -1,6 +1,9 @@
 package com.sree.base.service.webservice.rest;
 
 import javax.jws.WebService;
+
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -12,7 +15,15 @@ public class OrderProcessImpl implements OrderProcess {
 
 	public Orders getOrders() {
 		Orders o = new Orders();
-		o.setOrder(orders.values());
+		Order order = new Order();
+		order.setName("sree");
+		order.setOrderID("1250");
+		Collection<Order> collection = new ArrayList<Order>();
+		collection.add(order);
+		order.setName("Padma");
+		order.setOrderID("2300");
+		collection.add(order);
+		o.setOrder(collection);
 		return o;
 	}
 
