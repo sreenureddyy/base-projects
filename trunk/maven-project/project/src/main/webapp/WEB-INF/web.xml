@@ -85,11 +85,34 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<param-value>Development</param-value>
 	</context-param>
 
+	<context-param>
+		<description>
+			When set to true(by default it is), Chartlet servlet is used
+			to generate the chart, otherwise a phaselistener is used
+		</description>
+		<param-name>
+			net.sf.jsfcomp.chartcreator.USE_CHARTLET
+		</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>Chartlet</servlet-name>
+		<servlet-class>
+			net.sf.jsfcomp.chartcreator.Chartlet
+		</servlet-class>
+	</servlet>
+
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet-mapping>
+		<servlet-name>Chartlet</servlet-name>
+		<url-pattern>*.chart</url-pattern>
+	</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
