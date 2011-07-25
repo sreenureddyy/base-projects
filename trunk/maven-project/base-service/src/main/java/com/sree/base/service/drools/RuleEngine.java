@@ -29,7 +29,7 @@ import org.springframework.web.context.ServletContextAware;
  * @author srinivasr
  * 
  */
-@Service("ruleEngine")
+//@Service("ruleEngine")
 public class RuleEngine implements ServletContextAware, IRuleEngine {
 
 	private static Logger logger = Logger.getLogger(RuleEngine.class);
