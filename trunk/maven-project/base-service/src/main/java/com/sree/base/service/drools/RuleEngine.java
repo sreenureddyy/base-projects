@@ -22,7 +22,6 @@ import org.drools.builder.KnowledgeBuilderErrors;
 import org.drools.builder.KnowledgeBuilderFactory;
 import org.drools.builder.ResourceType;
 import org.drools.io.ResourceFactory;
-import org.springframework.stereotype.Service;
 import org.springframework.web.context.ServletContextAware;
 
 /**
