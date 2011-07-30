@@ -20,8 +20,8 @@ import org.springframework.security.core.GrantedAuthority;
 @Table(name = "AUTHORITY")
 @SuppressWarnings("serial")
 public class Authority extends BaseDomain implements GrantedAuthority {
-	@Column(name = "AUTHORITY_ID")
 	@Id
+	@Column(name = "AUTHORITY_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
