@@ -4,7 +4,7 @@
 package com.sree.base.domain;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -24,17 +24,13 @@ public class BaseDomain implements Serializable {
 
 	@Column(name = "CREATEDDATETIME", nullable = false)
 	@OrderBy(value = "desc")
-	private Timestamp createdDatetime;
+	private Date createdDatetime;
 
 	@Column(name = "UPDATEDBY", length = AnnotationValues.CREATEDBY_LENGTH)
 	private String updatedBy;
 
 	@Column(name = "UPDATEDDATETIME")
-	private Timestamp updatedDatetime;
-
-	/*@Column(name = "HIBVERSION")
-	@Version
-	private int versionNo;*/
+	private Date updatedDatetime;
 
 	public String getCreatedBy() {
 		return createdBy;
@@ -44,11 +40,11 @@ public class BaseDomain implements Serializable {
 		this.createdBy = createdBy;
 	}
 
-	public Timestamp getCreatedDatetime() {
+	public Date getCreatedDatetime() {
 		return createdDatetime;
 	}
 
-	public void setCreatedDatetime(Timestamp createdDatetime) {
+	public void setCreatedDatetime(Date createdDatetime) {
 		this.createdDatetime = createdDatetime;
 	}
 
@@ -60,20 +56,17 @@ public class BaseDomain implements Serializable {
 		this.updatedBy = updatedBy;
 	}
 
-	public Timestamp getUpdatedDatetime() {
+	public Date getUpdatedDatetime() {
 		return updatedDatetime;
 	}
 
-	public void setUpdatedDatetime(Timestamp updatedDatetime) {
+	public void setUpdatedDatetime(Date updatedDatetime) {
 		this.updatedDatetime = updatedDatetime;
 	}
 
-	/*public int getVersionNo() {
-		return versionNo;
-	}
+	/*@Column(name = "HIBVERSION")
+	@Version
+	private int versionNo;*/
 
-	public void setVersionNo(int versionNo) {
-		this.versionNo = versionNo;
-	}*/
 
 }
