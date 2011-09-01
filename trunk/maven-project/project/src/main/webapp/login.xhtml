@@ -6,24 +6,98 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich">
 <h:head>
+    <title>Reddies</title>
+   <link rel="stylesheet" media="all" type="text/css" href="css/footer.css" />
+   <link rel="stylesheet" media="all" type="text/css" href="css/style.css" />
+	<style>
+
+	</style>
 </h:head>
-<h:body>
-	<rich:panel id="panel">
-		<f:facet name="header">
-			<h:outputText value="User Login" />
-		</f:facet>
-		<form name="form"
-			action="#{facesContext.externalContext.requestContextPath}/j_spring_security_check"
-			method="post"><h:messages errorClass="errorMessage" /> <h:panelGrid>
-			<h:outputText value="Username" />
-			<h:inputText id="j_username" required="true" value="sree" />
+<body>
+    <div style="margin-left:50px; float:right;">
+        <ul id="menu">
+            <li class="logo">
+                <img style="float:left;" alt="" src="images/menu_left.png"/>
+                <ul id="main">
+                    <li>Welcome to <b>Reddies</b> <br/> A Definite Source!</li>
+                    <li class="last">
+                        <img class="corner_left" alt="" src="images/corner_blue_left.png"/>
+                        <img class="middle" alt="" src="images/dot_blue.png"/>
+                        <img class="corner_right" alt="" src="images/corner_blue_right.png"/>
+                    </li>
+                </ul>
+                
+            </li>
+            <li><a href="#">About Us</a></li>
+			<li><a href="#">Contact Us</a></li>
+            <li><a href="#">Help</a>
+                <ul id="help">
+                    <li>
+                        <img class="corner_inset_left" alt="" src="images/corner_inset_left.png"/>
+                        <a href="#">General help</a>
+                        <img class="corner_inset_right" alt="" src="images/corner_inset_right.png"/>
+                    </li>
+                    <li><a href="#">Posts</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li class="last">
+                        <img class="corner_left" alt="" src="images/corner_left.png"/>
+                        <img class="middle" alt="" src="images/dot.gif"/>
+                        <img class="corner_right" alt="" src="images/corner_right.png"/>
+                    </li>
+                </ul>
+            </li>
+            <li class="searchContainer">
+                <div>
+					<input type="text" id="searchField" />
+					<img src="images/magnifier.png" alt="Search" onclick="alert('You clicked on search button')" />
+				</div>
+                <!--ul id="search">
+                    <li>
+                        <img class="corner_inset_left" alt="" src="corner_inset_left.png"/>
+                        <input id="cbxAll" type="checkbox" />All
+                        <img class="corner_inset_right" alt="" src="corner_inset_right.png"/>
+                    </li>
+                    <li><input id="Articles" type="checkbox" />Articles</li>
+                    <li><input id="Tutorials" type="checkbox" />Tutorials</li>
+                    <li><input id="Reviews" type="checkbox" />Reviews</li>
+                    <li><input id="Resources" type="checkbox" />Resources</li>
+                    <li class="last">
+                        <img class="corner_left" alt="" src="corner_left.png"/>
+                        <img class="middle" alt="" src="dot.gif"/>
+                        <img class="corner_right" alt="" src="corner_right.png"/>
+                    </li>
+                </ul-->
+            </li>
+        </ul>
+        <img style="float:left;" alt="" src="images/menu_right.png"/>
+    </div>
+    <div id="login">
+		<center>
+			<br/>
+			
+			<form name="form"
+				action="#{facesContext.externalContext.requestContextPath}/j_spring_security_check"
+				method="post"><h:messages errorClass="errorMessage" /> <h:panelGrid>
+				<h:outputText value="Username" style="font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; font-weight:bold" />
+				<h:inputText id="j_username" required="true" value="sree" />
 
-			<h:outputText value="Password" />
-			<h:inputSecret id="j_password" required="true" redisplay="true"
-				value="sree" />
+				<b><h:outputText value="Password" style="font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; font-weight:bold"/></b>
+				<h:inputSecret id="j_password" required="true" redisplay="true"
+					value="sree" />
 
-			<input name="submit" type="submit" class="buttonbg" value="Sign In" />
-		</h:panelGrid></form>
-	</rich:panel>
-</h:body>
+				<input name="submit" type="submit" value="Sign In" />
+			</h:panelGrid></form>
+		</center>
+    </div>    
+    
+    <div id="footer">
+    	<div id="cssplay-design">
+            <b></b>
+            <h1>CSS <span><i>p</i>lay</span></h1>
+            <h2>web design &amp; assistance</h2>
+            <a title="Sree" href="http://www.reddies.in">click for details</a>
+		</div>
+    </div>
+	
+</body>
 </html>
