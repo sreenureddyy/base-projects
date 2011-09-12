@@ -18,7 +18,6 @@ import com.sree.icd.domain.ICDCode;
  * @author srinivasr
  * 
  */
-@SuppressWarnings("unchecked")
 public class ICDCodeInsertSql extends BaseTest {
 	private Logger log = Logger.getLogger(ICDCodeInsertSql.class);
 
