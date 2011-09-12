@@ -13,7 +13,7 @@ import com.sree.base.service.drools.Employee;
 import com.sree.base.service.drools.EmployeeVo;
 import com.sree.base.service.drools.IRuleEngine;
 
-@SuppressWarnings( { "serial", "unused" })
+@SuppressWarnings("unused")
 @Component("droolsBean")
 @Scope(value = "request")
 public class DroolsBean extends BaseBean {
