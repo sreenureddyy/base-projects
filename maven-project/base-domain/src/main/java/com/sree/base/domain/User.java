@@ -6,14 +6,20 @@ package com.sree.base.domain;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -25,8 +31,9 @@ import org.springframework.security.core.userdetails.UserDetails;
  * 
  */
 
-@NamedQueries( { @NamedQuery(name = "findUserByUserName", query = "select user from User user where user.username = ? and user.enabled = 1"), 
-	@NamedQuery(name = "findAllUsers", query = "from User user") })
+@NamedQueries({
+		@NamedQuery(name = "findUserByUserName", query = "select user from User user where user.username = ? and user.enabled = 1"),
+		@NamedQuery(name = "findAllUsers", query = "from User user") })
 @Entity
 @Table(name = "USER")
 @SuppressWarnings("serial")
@@ -52,7 +59,7 @@ public class User extends BaseDomain implements UserDetails {
 	private Long gender;
 
 	@Column(name = "DOB", nullable = false)
-	private Date dob;
+	private Date dob = new Date();
 
 	@Column(name = "ACCOUNT_NON_LOCKED")
 	private Boolean accountNonLocked = true;
@@ -66,15 +73,23 @@ public class User extends BaseDomain implements UserDetails {
 	@Column(name = "ENABLED")
 	private Boolean enabled = true;
 
+	@JoinColumn(name = "USER_TYPE")
+	@ManyToOne(cascade = CascadeType.ALL)
+	private LookupValue userType = new LookupValue();
+
 	/*
-	 * @JoinColumn(name = "USER_ID") @OneToMany(cascade = CascadeType.ALL, fetch =
-	 * FetchType.EAGER) private List<UserAuthority> userAuthorities = new
+	 * @JoinColumn(name = "USER_ID") @OneToMany(cascade = CascadeType.ALL, fetch
+	 * = FetchType.EAGER) private List<UserAuthority> userAuthorities = new
 	 * ArrayList<UserAuthority>();
 	 */
 
-	/*@JoinColumn(name = "USER_ID")
 	@OneToMany(cascade = CascadeType.ALL)
-	List<Address> address = new ArrayList<Address>();*/
+	@JoinTable(name = "USER_ADDRESS", joinColumns = { @JoinColumn(name = "USER") }, inverseJoinColumns = { @JoinColumn(name = "ADDRESS") })
+	List<Address> address = new ArrayList<Address>();
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "USER_CONTACTS", joinColumns = { @JoinColumn(name = "USER") }, inverseJoinColumns = { @JoinColumn(name = "CONTACT_DETAILS") })
+	List<ContactDetails> contactDetails = new ArrayList<ContactDetails>();
 
 	@Transient
 	private Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
@@ -160,20 +175,20 @@ public class User extends BaseDomain implements UserDetails {
 	}
 
 	/*
-	 * public List<UserAuthority> getUserAuthorities() { return
-	 * userAuthorities; }
+	 * public List<UserAuthority> getUserAuthorities() { return userAuthorities;
+	 * }
 	 * 
 	 * public void setUserAuthorities(List<UserAuthority> userAuthorities) {
 	 * this.userAuthorities = userAuthorities; }
 	 */
 
-	/*public List<Address> getAddress() {
+	public List<Address> getAddress() {
 		return address;
 	}
 
 	public void setAddress(List<Address> address) {
 		this.address = address;
-	}*/
+	}
 
 	public String getFirstname() {
 		return firstname;
@@ -205,6 +220,22 @@ public class User extends BaseDomain implements UserDetails {
 
 	public void setDob(Date dob) {
 		this.dob = dob;
+	}
+
+	public LookupValue getUserType() {
+		return userType;
+	}
+
+	public void setUserType(LookupValue userType) {
+		this.userType = userType;
+	}
+
+	public List<ContactDetails> getContactDetails() {
+		return contactDetails;
+	}
+
+	public void setContactDetails(List<ContactDetails> contactDetails) {
+		this.contactDetails = contactDetails;
 	}
 
 }

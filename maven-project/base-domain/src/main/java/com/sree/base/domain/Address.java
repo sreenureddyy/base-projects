@@ -3,25 +3,57 @@
  */
 package com.sree.base.domain;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * @author Sree
  *
  */
 @SuppressWarnings("serial")
+@Entity
+@Table(name="ADDRESS")
 public class Address extends BaseDomain {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column(name="HOUSE_NO")
 	private String houseNo;
+	
+	@Column(name="STREET")
 	private String street;
+	
+	@Column(name="CITY_TOWN")
 	private String cityTown;
+	
+	@Column(name="LANDMARK")
 	private String landmark;
+	
+	@Column(name="PINCODE")
 	private String pinCode;
-	private String addressType;
 	
-	private Boolean isPrimary;
+	@JoinColumn(name = "ADDRESS_TYPE")
+	@ManyToOne(cascade = CascadeType.ALL)
+	private LookupValue addressType = new LookupValue();
 	
+	@JoinColumn(name = "STATE")
+	@ManyToOne(cascade = CascadeType.ALL)
 	private State state = new State();
+	
+	@JoinColumn(name = "COUNTRY")
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Country country = new Country();
+	
+	@Column(name="ISPRIMARY")
+	private Boolean isPrimary = true;
 	
 	public Long getId() {
 		return id;
@@ -59,12 +91,6 @@ public class Address extends BaseDomain {
 	public void setPinCode(String pinCode) {
 		this.pinCode = pinCode;
 	}
-	public String getAddressType() {
-		return addressType;
-	}
-	public void setAddressType(String addressType) {
-		this.addressType = addressType;
-	}
 	public Boolean getIsPrimary() {
 		return isPrimary;
 	}
@@ -82,6 +108,12 @@ public class Address extends BaseDomain {
 	}
 	public void setCountry(Country country) {
 		this.country = country;
+	}
+	public LookupValue getAddressType() {
+		return addressType;
+	}
+	public void setAddressType(LookupValue addressType) {
+		this.addressType = addressType;
 	}
 	
 }

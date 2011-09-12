@@ -3,21 +3,40 @@
  */
 package com.sree.base.domain;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * @author Sree
  *
  */
 @SuppressWarnings("serial")
+@Entity
+@Table(name="STATE")
 public class State extends BaseDomain {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column(name="STATE_NAME")
 	private String sateName;
+	
+	@Column(name="STATE_CODE")
 	private String stateCode;
-	
+
+	@Column(name="ISDEFAULT")
 	private Boolean isDefault;
-	private Boolean isActive;
-	private Boolean isModifiable;
 	
+	@JoinColumn(name = "COUNTRY")
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Country country = new Country();
 
 	public Long getId() {
@@ -52,14 +71,6 @@ public class State extends BaseDomain {
 		this.isDefault = isDefault;
 	}
 
-	public Boolean getIsActive() {
-		return isActive;
-	}
-
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
-	}
-
 	public Country getCountry() {
 		return country;
 	}
@@ -67,12 +78,5 @@ public class State extends BaseDomain {
 	public void setCountry(Country country) {
 		this.country = country;
 	}
-
-	public Boolean getIsModifiable() {
-		return isModifiable;
-	}
-
-	public void setIsModifiable(Boolean isModifiable) {
-		this.isModifiable = isModifiable;
-	}
+	
 }

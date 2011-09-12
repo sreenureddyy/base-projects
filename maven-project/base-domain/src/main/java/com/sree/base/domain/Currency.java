@@ -3,28 +3,51 @@
  */
 package com.sree.base.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author Sree
  *
  */
 @SuppressWarnings("serial")
+@Entity
+@Table(name="CURRENCY")
 public class Currency extends BaseDomain {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column(name="CURRENCY_NAME")
 	private String currencyName;
+	
+	@Column(name="CURRENCY_CODE")
 	private String currencyCode;
+	
+	@Column(name="CURRENCY_SYMBOL")
 	private String currencySymbol;
+	
+	@Column(name="LOWER_DENOMINATION")
 	private String lowerDenomination;
+	
+	@Column(name="ALIAS_NAME")
 	private String aliasName;
-	private String isBaseCurrency;
+	
+	@Column(name="ISDEFAULT")
+	private String isDefault;
+	
+	@Column(name="COMMENTS")
 	private String comments;
 	
+	@Column(name="CHANGE_FACTOR")
 	private Integer changeFactor;
 	
+	@Column(name="ISACTIVE")
 	private Boolean isActive;
-	private Boolean isModifiable;
-	
-	private Country country = new Country();
 
 	public Long getId() {
 		return id;
@@ -74,12 +97,12 @@ public class Currency extends BaseDomain {
 		this.aliasName = aliasName;
 	}
 
-	public String getIsBaseCurrency() {
-		return isBaseCurrency;
+	public String getIsDefault() {
+		return isDefault;
 	}
 
-	public void setIsBaseCurrency(String isBaseCurrency) {
-		this.isBaseCurrency = isBaseCurrency;
+	public void setIsDefault(String isDefault) {
+		this.isDefault = isDefault;
 	}
 
 	public String getComments() {
@@ -104,22 +127,6 @@ public class Currency extends BaseDomain {
 
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
-	}
-
-	public Country getCountry() {
-		return country;
-	}
-
-	public void setCountry(Country country) {
-		this.country = country;
-	}
-
-	public Boolean getIsModifiable() {
-		return isModifiable;
-	}
-
-	public void setIsModifiable(Boolean isModifiable) {
-		this.isModifiable = isModifiable;
 	}
 	
 }

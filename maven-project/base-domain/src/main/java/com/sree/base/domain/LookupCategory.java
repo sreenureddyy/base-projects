@@ -3,19 +3,34 @@
  */
 package com.sree.base.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author Sree
  *
  */
 @SuppressWarnings("serial")
+@Entity
+@Table(name="LOOKUP_CATEGORY")
 public class LookupCategory extends BaseDomain {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private Long id;
 	
+	@Column(name = "LOOKUP_CATEGORY")
 	private String lookupCategory;
+	
+	@Column(name = "DESCRIPTION")
 	private String description;
 	
+	@Column(name = "ISACTIVE")
 	private Boolean isActive;
-	private Boolean isModifiable;
 	
 	public Long getId() {
 		return id;
@@ -40,11 +55,5 @@ public class LookupCategory extends BaseDomain {
 	}
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
-	}
-	public Boolean getIsModifiable() {
-		return isModifiable;
-	}
-	public void setIsModifiable(Boolean isModifiable) {
-		this.isModifiable = isModifiable;
 	}
 }
