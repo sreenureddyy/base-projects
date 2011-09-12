@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import com.sree.base.domain.User;
 
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public interface IBaseDao {
 
 	public void save(Object object);
