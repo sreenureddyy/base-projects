@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 import com.sree.base.domain.User;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public interface IBaseService {
 	public void save(Object obj);
 
