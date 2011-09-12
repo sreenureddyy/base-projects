@@ -32,7 +32,7 @@ import org.springframework.web.jsf.FacesContextUtils;
  */
 @Component("baseBean")
 @Scope(value = "session")
-@SuppressWarnings( { "serial", "unchecked" })
+@SuppressWarnings( { "rawtypes" })
 public class BaseBean {
 	@SuppressWarnings("unused")
 	private String string = new String();

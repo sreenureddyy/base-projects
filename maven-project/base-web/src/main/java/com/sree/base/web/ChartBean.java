@@ -13,7 +13,6 @@ import com.sree.base.web.BaseBean;
  * @author Sree
  * 
  */
-@SuppressWarnings({"serial"})
 @Component("chartBean")
 @Scope(value = "request")
 public class ChartBean extends BaseBean{
