@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -77,11 +78,11 @@ public class User extends BaseDomain implements UserDetails {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private LookupValue userType = new LookupValue();
 
-	/*
-	 * @JoinColumn(name = "USER_ID") @OneToMany(cascade = CascadeType.ALL, fetch
-	 * = FetchType.EAGER) private List<UserAuthority> userAuthorities = new
-	 * ArrayList<UserAuthority>();
-	 */
+	
+	 @JoinColumn(name = "USER_ID")
+	 @OneToMany(cascade = CascadeType.ALL) 
+	 private List<UserAuthority> userAuthorities = new ArrayList<UserAuthority>();
+	
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "USER_ADDRESS", joinColumns = { @JoinColumn(name = "USER") }, inverseJoinColumns = { @JoinColumn(name = "ADDRESS") })
@@ -236,6 +237,14 @@ public class User extends BaseDomain implements UserDetails {
 
 	public void setContactDetails(List<ContactDetails> contactDetails) {
 		this.contactDetails = contactDetails;
+	}
+	
+	public List<UserAuthority> getUserAuthorities() {
+		return userAuthorities;
+	}
+
+	public void setUserAuthorities(List<UserAuthority> userAuthorities) {
+		this.userAuthorities = userAuthorities;
 	}
 
 }
