@@ -1,13 +1,17 @@
 package com.sree.base.web;
 
 import java.text.MessageFormat;
+
+import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
+import javax.servlet.http.HttpServletResponse;
+
 import org.richfaces.log.LogFactory;
 import org.richfaces.log.Logger;
 
-@SuppressWarnings({"rawtypes","unchecked"})
+@SuppressWarnings( { "rawtypes", "unchecked" })
 public class PhaseTracker implements PhaseListener {
 	private static final long serialVersionUID = 6358081870120864332L;
 	private Logger logger = LogFactory.getLogger(PhaseTracker.class);
@@ -29,9 +33,20 @@ public class PhaseTracker implements PhaseListener {
 	}
 
 	public void beforePhase(PhaseEvent event) {
-		this.logger.debug(MessageFormat.format("Phase {0} started",
+		logger.debug(MessageFormat.format("Phase {0} started",
 				new Object[] { event.getPhaseId() }));
 		this.phaseTimer.set(Long.valueOf(System.currentTimeMillis()));
+
+		FacesContext facesContext = event.getFacesContext();
+		HttpServletResponse response = (HttpServletResponse) facesContext
+				.getExternalContext().getResponse();
+		response.addHeader("Pragma", "no-cache");
+		response.addHeader("Cache-Control", "no-cache");
+		// Stronger according to blog comment below that references HTTP spec
+		response.addHeader("Cache-Control", "no-store");
+		response.addHeader("Cache-Control", "must-revalidate");
+		// some date in the past
+		response.addHeader("Expires", "Mon, 8 Aug 2006 10:00:00 GMT");
 	}
 
 	public PhaseId getPhaseId() {
