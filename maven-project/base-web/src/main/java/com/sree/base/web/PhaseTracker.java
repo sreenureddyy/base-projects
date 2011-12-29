@@ -7,14 +7,13 @@ import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.log4j.Logger;
+import com.sree.base.dao.BaseDao;
 
-import org.richfaces.log.LogFactory;
-import org.richfaces.log.Logger;
-
-@SuppressWarnings( { "rawtypes", "unchecked" })
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class PhaseTracker implements PhaseListener {
 	private static final long serialVersionUID = 6358081870120864332L;
-	private Logger logger = LogFactory.getLogger(PhaseTracker.class);
+	private static final Logger logger = Logger.getLogger(PhaseTracker.class);
 	private ThreadLocal<Long> phaseTimer = new ThreadLocal();
 
 	public void afterPhase(PhaseEvent event) {
@@ -27,8 +26,9 @@ public class PhaseTracker implements PhaseListener {
 		}
 
 		this.logger.debug(MessageFormat
-				.format("Phase {0} completed by {1}ms", new Object[] {
-						event.getPhaseId(), Long.valueOf(measuredTime) }));
+				.format("Phase {0} completed by {1}ms",
+						new Object[] { event.getPhaseId(),
+								Long.valueOf(measuredTime) }));
 		this.phaseTimer.set(null);
 	}
 
