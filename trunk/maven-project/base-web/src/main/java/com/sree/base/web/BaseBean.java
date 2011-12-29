@@ -3,6 +3,7 @@
  */
 package com.sree.base.web;
 
+import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +33,8 @@ import org.springframework.web.jsf.FacesContextUtils;
  */
 @Component("baseBean")
 @Scope(value = "session")
-@SuppressWarnings( { "rawtypes" })
-public class BaseBean {
+@SuppressWarnings( { "rawtypes", "serial" })
+public class BaseBean implements Serializable{
 	@SuppressWarnings("unused")
 	private String string = new String();
 	private Logger log = Logger.getLogger(BaseBean.class);
