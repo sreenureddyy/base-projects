@@ -6,6 +6,11 @@
 	<query name="getusers">
 		<![CDATA[ select user.username from com.sree.base.domain.User user where user.id = 1]]>
 	</query>
+	
+	<query name="getAllUsers">
+		<![CDATA[ select user from com.sree.base.domain.User user ]]>
+	</query>
+	
 	<!-- query name="getUserAuthorities">
 		<![CDATA[ select authority.id from UserAuthority as userAuthority 
 					left join userAuthority.authority as authority 
