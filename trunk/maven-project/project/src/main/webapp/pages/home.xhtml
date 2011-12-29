@@ -2,78 +2,116 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 </h:head>
 
-<head>
-        <title>Fixed Navigation - Codrops</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-</head>
- <style>
-      /*  body{
+<style>
+/*  body{
            background:#fff url(desc.png) no-repeat 50px 100px;
            font-family:Arial;
            height:2000px;
        } */
-       .header
-       {
-           width:600px;
-           height:56px;
-           position:absolute;
-           top:0px;
-           left:25%;
-           background:#fff url(title.png) no-repeat top left;
-       }
-       a.back{
-           width:256px;
-           height:73px;
-           position:fixed;
-           bottom:15px;
-           right:15px;
-           background:#fff url(codrops_back.png) no-repeat top left;
-       }
-       .scroll{
-           width:133px;
-           height:61px;
-           position:fixed;
-           bottom:15px;
-           left:150px;
-           background:#fff url(scroll.png) no-repeat top left;
-       }
-       .info{
-           text-align:right;
+.header {
+	width: 600px;
+	height: 56px;
+	position: absolute;
+	top: 0px;
+	left: 25%;
+	background: #fff url(title.png) no-repeat top left;
+}
 
-       }
- </style>
+a.back {
+	width: 256px;
+	height: 73px;
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	background: #fff url(codrops_back.png) no-repeat top left;
+}
+
+.scroll {
+	width: 133px;
+	height: 61px;
+	position: fixed;
+	bottom: 15px;
+	left: 150px;
+	background: #fff url(scroll.png) no-repeat top left;
+}
+
+.info {
+	text-align: right;
+}
+</style>
 <h:body>
-	<div class="header"><h1>Home</h1></div>
-	 <div class="scroll"></div>
-	 
-	  <div class="info">
-            
-       
-        
-		<h:form>
-	
+	<div class="header">
+		<h1>Home</h1>
+	</div>
+	<div class="scroll"></div>
+	<h:form>
+		<div class="info">
+
+
+
+
+
 			<h:outputText value="Sree App..." />
-	
+
 			<h:outputText value="Welcome, #{baseBean.user.username}" />
-	
+
 			<a title="Sign Out" style="text-decoration: none;"
 				href="#{facesContext.externalContext.requestContextPath}/spring/logout">Sign
-			Out</a>
+				Out</a>
 			<h:commandButton value="TestJMS"
 				action="#{sendMessageBean.sendMessage}"></h:commandButton>
 			<br />
 			<h:outputText value="#{droolsBean.amount}" />
-			
-		</h:form>
-		
-		<a class="back" href="http://www.codrops.com"></a>
-        <a href="http://dryicons.com">Icons by DryIcons.com</a>
-		
-	</div>
+
+
+
+			<a class="back" href="http://www.codrops.com"></a> <a
+				href="http://dryicons.com">Icons by DryIcons.com</a>
+
+		</div>
+
+
+
+		<p:dataTable id="tbl" var="user" value="#{homeBean.userList}"
+			paginator="true" rows="10">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="FirstName" />
+				</f:facet>
+				<h:outputText value="#{user.firstname}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="UserName" />
+				</f:facet>
+				<h:outputText value="#{user.username}" />
+			</p:column>
+		</p:dataTable>
+
+		<h:panelGrid columns="1">
+			<p:panel header="Export All Data">
+				<h:commandLink>
+
+					<h:outputText value="xls" />
+					<p:dataExporter type="xls" target="tbl" fileName="user" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<h:outputText value="pdf" />
+					<p:dataExporter type="pdf" target="tbl" fileName="user" />
+				</h:commandLink>
+
+
+			</p:panel>
+		</h:panelGrid>
+
+	</h:form>
 </h:body>
 </html>
