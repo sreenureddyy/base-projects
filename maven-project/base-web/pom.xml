@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>maven-project</artifactId>
@@ -18,9 +17,7 @@
 		<project-version>1.0</project-version>
 
 		<!-- for Alhpa versions it was just 'ALPHA2' -->
-		<org.richfaces.bom.version>
-			4.0.0.Final
-		</org.richfaces.bom.version>
+		<!-- org.richfaces.bom.version> 4.0.0.Final </org.richfaces.bom.version -->
 
 		<spring.version>3.0.5.RELEASE</spring.version>
 		<org.springsecurity-version>
@@ -65,23 +62,29 @@
 		</dependency>
 
 		<!-- Richfaces dependencies starts -->
-		<dependency>
-			<groupId>org.richfaces.ui</groupId>
-			<artifactId>richfaces-components-ui</artifactId>
-			<version>${org.richfaces.bom.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.richfaces.core</groupId>
-			<artifactId>richfaces-core-impl</artifactId>
-			<version>${org.richfaces.bom.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.richfaces.cdk</groupId>
-			<artifactId>annotations</artifactId>
-			<scope>provided</scope>
-			<version>${org.richfaces.bom.version}</version>
-		</dependency>
+		<!-- dependency> <groupId>org.richfaces.ui</groupId> <artifactId>richfaces-components-ui</artifactId> 
+			<version>${org.richfaces.bom.version}</version> </dependency> <dependency> 
+			<groupId>org.richfaces.core</groupId> <artifactId>richfaces-core-impl</artifactId> 
+			<version>${org.richfaces.bom.version}</version> </dependency> <dependency> 
+			<groupId>org.richfaces.cdk</groupId> <artifactId>annotations</artifactId> 
+			<scope>provided</scope> <version>${org.richfaces.bom.version}</version> </dependency -->
 		<!-- Richfaces dependencies ends -->
+
+		<!-- Primefaces Starts -->
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>3.0.RC1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>flick</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<!-- Primefaces ends -->
 
 		<!-- JSF dependencies starts -->
 		<dependency>
@@ -96,7 +99,7 @@
 		</dependency>
 		<!-- JSF dependencies ends -->
 
-		<!-- Spring dependencies starts-->
+		<!-- Spring dependencies starts -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -153,44 +156,27 @@
 		</dependency>
 
 		<!-- JFree Charts -->
-		<dependency>
-			<groupId>jfree</groupId>
-			<artifactId>jfreechart</artifactId>
-			<version>1.0.13</version>
-		</dependency>
-
-		<dependency>
-			<groupId>net.sf.jsf-comp</groupId>
-			<artifactId>chartcreator</artifactId>
-			<version>1.2.0</version>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.faces</groupId>
-					<artifactId>jsf-impl</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.faces</groupId>
-					<artifactId>jsf-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<!-- JFree Charts Ends-->
+		<!-- dependency> <groupId>jfree</groupId> <artifactId>jfreechart</artifactId> 
+			<version>1.0.13</version> </dependency> <dependency> <groupId>net.sf.jsf-comp</groupId> 
+			<artifactId>chartcreator</artifactId> <version>1.2.0</version> <exclusions> 
+			<exclusion> <groupId>javax.faces</groupId> <artifactId>jsf-impl</artifactId> 
+			</exclusion> <exclusion> <groupId>javax.faces</groupId> <artifactId>jsf-api</artifactId> 
+			</exclusion> </exclusions> </dependency -->
+		<!-- JFree Charts Ends -->
 
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.richfaces</groupId>
-				<artifactId>richfaces-bom</artifactId>
-				<version>${org.richfaces.bom.version}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+	<!-- dependencyManagement> <dependencies> <dependency> <groupId>org.richfaces</groupId> 
+		<artifactId>richfaces-bom</artifactId> <version>${org.richfaces.bom.version}</version> 
+		<scope>import</scope> <type>pom</type> </dependency> </dependencies> </dependencyManagement -->
 
 	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
 		<repository>
 			<id>java.net2</id>
 			<name>Repository hosting the jee6 artifacts</name>
