@@ -353,7 +353,14 @@
 		</dependency>
 		<!-- Drools Ends -->
 	</dependencies>
-
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 	<!-- dependencyManagement> <dependencies> <dependency> <groupId>org.richfaces</groupId> 
 		<artifactId>richfaces-bom</artifactId> <version>${org.richfaces.bom.version}</version> 
 		<scope>import</scope> <type>pom</type> </dependency> </dependencies> </dependencyManagement -->
