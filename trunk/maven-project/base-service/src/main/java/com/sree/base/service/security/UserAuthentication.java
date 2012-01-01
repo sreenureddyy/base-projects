@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import com.sree.base.domain.Authority;
 import com.sree.base.domain.User;
 import com.sree.base.service.IBaseService;
+import com.sree.service.user.IUserService;
 
 /**
  * @author YSReddi
@@ -25,33 +26,28 @@ import com.sree.base.service.IBaseService;
 public class UserAuthentication implements UserDetailsService {
 
 	@Autowired
-	private IBaseService baseService;
+	private IUserService userService;
 	private static Logger log = Logger.getLogger(UserAuthentication.class);
-
-	public IBaseService getBaseService() {
-		return baseService;
-	}
-
-	public void setBaseService(IBaseService baseService) {
-		this.baseService = baseService;
-	}
 
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException, DataAccessException {
 		log.info("Log in User name :: " + username);
-		List<User> userList = baseService.find("findUserByUserName", username);
-		List<Authority> userAuthorities = baseService.find("getUserAuthorities", username);
-		
+		List<User> userList = (List<User>) userService.getUser(
+				"findUserByUserName", username);
+		List<Authority> userAuthorities = (List<Authority>) userService
+				.getUser("getUserAuthorities", username);
+
 		if (userList.size() == 0 || userAuthorities.size() == 0) {
 			throw new UsernameNotFoundException(username + " not found");
 		}
-			
+
 		User user = userList.get(0);
-		
+
 		for (Authority authority : userAuthorities) {
-			user.getAuthorities().add(new GrantedAuthorityImpl(authority.getAuthority()));
+			user.getAuthorities().add(
+					new GrantedAuthorityImpl(authority.getAuthority()));
 		}
-		
+
 		return user;
 	}
 
