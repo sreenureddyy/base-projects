@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+
+<head>
+        <title>Fixed Navigation - Codrops</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+ <style>
+      /*  body{
+           background:#fff url(desc.png) no-repeat 50px 100px;
+           font-family:Arial;
+           height:2000px;
+       } */
+       .header
+       {
+           width:600px;
+           height:56px;
+           position:absolute;
+           top:0px;
+           left:25%;
+           background:#fff url(title.png) no-repeat top left;
+       }
+       a.back{
+           width:256px;
+           height:73px;
+           position:fixed;
+           bottom:15px;
+           right:15px;
+           background:#fff url(codrops_back.png) no-repeat top left;
+       }
+       .scroll{
+           width:133px;
+           height:61px;
+           position:fixed;
+           bottom:15px;
+           left:150px;
+           background:#fff url(scroll.png) no-repeat top left;
+       }
+       .info{
+           text-align:right;
+
+       }
+ </style>
+<h:body>
+	<div class="header"><h1>Home</h1></div>
+	 <div class="scroll"></div>
+	 
+	  <div class="info">
+            
+       
+        
+		<h:form>
+	
+			<h:outputText value="Sree App..." />
+	
+			<h:outputText value="Welcome, #{baseBean.user.username}" />
+	
+			<a title="Sign Out" style="text-decoration: none;"
+				href="#{facesContext.externalContext.requestContextPath}/spring/logout">Sign
+			Out</a>
+			<h:commandButton value="TestJMS"
+				action="#{sendMessageBean.sendMessage}"></h:commandButton>
+			<br />
+			<h:outputText value="#{droolsBean.amount}" />
+			
+		</h:form>
+		
+		<a class="back" href="http://www.codrops.com"></a>
+        <a href="http://dryicons.com">Icons by DryIcons.com</a>
+		
+	</div>
+</h:body>
+</html>
