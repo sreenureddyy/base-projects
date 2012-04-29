@@ -4,6 +4,9 @@
 package com.sree.common.embeddedmysql;
 
 import java.io.File;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +57,6 @@ public class EmbeddedMysqlManager {
         }
  
         File databaseDir = new File(new File(baseDatabaseDir), databaseName);
- 
         mysqldResource = new MysqldResource(databaseDir);
  
         Map<String, String> database_options = new HashMap<String, String>();
@@ -62,11 +64,18 @@ public class EmbeddedMysqlManager {
         database_options.put(MysqldResourceI.INITIALIZE_USER, "true");
         database_options.put(MysqldResourceI.INITIALIZE_USER_NAME, username);
         database_options.put(MysqldResourceI.INITIALIZE_PASSWORD, password);
- 
+
         mysqldResource.start("embedded-mysqld-thread-" + System.currentTimeMillis(), database_options);
  
         if (!mysqldResource.isRunning()) {
             throw new RuntimeException("MySQL did not start.");
+        }else{
+        	DataSource datasource = getDatasource();
+        	try {
+				printQueryResults(datasource, "SELECT VERSION()");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
         }
  
         logger.info("MySQL started successfully @ " + System.currentTimeMillis());
@@ -93,14 +102,15 @@ public class EmbeddedMysqlManager {
  
     public void shutdownDatabase() {
         mysqldResource.shutdown();
-        if (mysqldResource.isRunning() == false) {
+        logger.debug("=============== MySQL shutdown successfully ===============");
+        /*if (mysqldResource.isRunning() == false) {
             logger.info(">>>>>>>>>> DELETING MYSQL BASE DIR [" + mysqldResource.getBaseDir() + "] <<<<<<<<<<");
-            /*try {
-                //FileUtils.forceDelete(mysqldResource.getBaseDir());
+            try {
+                FileUtils.forceDelete(mysqldResource.getBaseDir());
             } catch (IOException e) {
                 logger.error(e.getMessage(), e);
-            }*/
-        }
+            }
+        }*/
     }
  
     /**
@@ -126,6 +136,27 @@ public class EmbeddedMysqlManager {
         return datasource;
     }
  
+    public static void printQueryResults(DataSource datasource, String SQLquery)
+            throws Exception {
+    	Connection conn = datasource.getConnection();
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(SQLquery);
+        int columns = rs.getMetaData().getColumnCount();
+        System.out.println("------------------------");
+        System.out.println();
+        while (rs.next()) {
+            for (int i = 1; i <= columns; i++) {
+                System.out.println(rs.getString(i));
+            }
+            System.out.println();
+        }
+        rs.close();
+        stmt.close();
+        System.out.println("------------------------");
+        System.out.flush();
+        Thread.sleep(100); // wait for System.out to finish flush
+    }
+    
     //-------------------------------------------------------------------------
     /**
      * @return the baseDatabaseDir
