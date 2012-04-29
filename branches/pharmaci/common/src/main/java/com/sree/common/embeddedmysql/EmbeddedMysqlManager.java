@@ -44,7 +44,6 @@ public class EmbeddedMysqlManager {
      * @return
      */
     public void startDatabase() {
-    	   logger.debug("=============== Starting Embedded MySQL ===============");
         if (logger.isDebugEnabled()) {
             logger.debug("=============== Starting Embedded MySQL using these parameters ===============");
             logger.debug("baseDatabaseDir : " + baseDatabaseDir);
