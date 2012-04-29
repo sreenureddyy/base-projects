@@ -30,7 +30,7 @@ public class DroolsBean extends BaseBean {
 				"Employee.xls");
 		StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
 		KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory
-				.newFileLogger(ksession, "C:/drools-audit");
+				.newFileLogger(ksession, System.getProperty("user.dir"));
 		// go !
 		Employee employee = new Employee();
 		employee.setAge(39);
