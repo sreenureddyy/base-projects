@@ -23,9 +23,27 @@
 		<link type="text/css" rel="stylesheet"
 			href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
 		<link type="text/css" rel="stylesheet"
-			href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
-		<link type="text/css" rel="stylesheet"
 			href="#{request.contextPath}/css/screen.css" />
+		<script type="text/javascript"
+			src="#{request.contextPath}/js/jquery/jquery-1.7.1.min.js" />
+		<script type="text/javascript"
+			src="#{request.contextPath}/js/jquery/jquery-1.7.1.js" />
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#show").hide();
+				$("#hide").click(function() {
+					$("#col1").hide();
+					$("#show").show();
+					$("#hide").hide();
+
+				});
+				$("#show").click(function() {
+					$("#col1").show();
+					$("#hide").show();
+					$("#show").hide();
+				});
+			});
+		</script>
 	</h:head>
 
 	<h:body>
@@ -35,25 +53,33 @@
 				<ui:include src="header.xhtml" />
 			</ui:insert>
 		</div>
+		<div class="colleft">
 
-		<div class="colmask leftmenu">
-			<div class="colleft">
-				<div class="col1">
-					<!-- Column 1 start -->
-					<ui:insert name="content">
+			<div class="col1" id="col1">
+				<!-- Column 1 start -->
+				<ui:insert name="leftnav">
+					<ui:include src="leftnav.xhtml" />
+				</ui:insert>
+				<!-- Column 1 end -->
+			</div>
+			<div style="width: 20px; right: 100%;" class="col3" id="col3">
+				<img height="20" width="20" src="../images/left-arrow.png"
+					style="cursor: pointer; padding-top: 270px;" title="Hide"
+					alt="Hide" id="hide" />
+				<img height="20" width="20"
+					src="../images/right-arrow.png"
+					style="cursor: pointer; padding-top: 270px;" title="Show"
+					alt="Show" id="show" />
+			</div>
+			<div class="col2" id="col2">
+				<!-- Column 2 start -->
+				<ui:insert name="content">
 
-					</ui:insert>
-					<!-- Column 1 end -->
-				</div>
-				<div class="col2">
-					<!-- Column 2 start -->
-					<ui:insert name="leftnav">
-						<ui:include src="leftnav.xhtml" />
-					</ui:insert>
-					<!-- Column 2 end -->
-				</div>
+				</ui:insert>
+				<!-- Column 2 end -->
 			</div>
 		</div>
+
 		<div id="footer">
 			<ui:insert name="footer">
 				<ui:include src="footer.xhtml" />

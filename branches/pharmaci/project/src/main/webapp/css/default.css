@@ -3,7 +3,6 @@ Design by Free CSS Templates
 http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 */
-
 body {
 	margin: 0px;
 	padding: 0;
@@ -11,7 +10,7 @@ body {
 	color: #616161;
 }
 
-h1, h2, h3 {
+h1,h2,h3 {
 	margin-top: 0;
 }
 
@@ -26,10 +25,11 @@ h2 {
 
 h3 {
 	font-size: 1em;
-	margin-top:20px;
+	margin-top: 20px;
 }
 
 ul {
+	
 }
 
 a {
@@ -62,7 +62,7 @@ img.right {
 	padding: 25px 10px 0 10px;
 }
 
-#logo h1, #logo p {
+#logo h1,#logo p {
 	float: left;
 	margin: 0;
 }
@@ -119,14 +119,12 @@ img.right {
 	text-decoration: underline;
 }
 
-
 /* Wrapper */
-
 #wrapper {
+	
 }
 
 /* Page */
-
 #page {
 	width: 960px;
 	margin: 0 auto;
@@ -135,17 +133,16 @@ img.right {
 }
 
 #page-bg {
+	
 }
 
 /* Latest Post */
-
 #latest-post {
 	padding: 20px;
 	border: 1px solid #E7E7E7;
 }
 
 /* Content */
-
 #content {
 	float: left;
 	width: 700px;
@@ -205,10 +202,10 @@ img.right {
 }
 
 .links a:hover {
+	
 }
 
 /* Sidebars */
-
 #sidebar1 {
 	float: left;
 	margin-top: -81px;
@@ -241,13 +238,13 @@ img.right {
 }
 
 .sidebar li ul {
+	
 }
 
 .sidebar li li {
 	margin: 0 10px 0 10px;
 	padding: 3px 0px;
 }
-
 
 .sidebar li h2 {
 	height: 40px;
@@ -261,6 +258,7 @@ img.right {
 }
 
 .sidebar a {
+	
 }
 
 .sidebar a:hover {
@@ -272,7 +270,6 @@ img.right {
 }
 
 /* Search */
-
 #searchform {
 	margin: 0;
 	padding: 0 0 0 0;
@@ -283,6 +280,7 @@ img.right {
 }
 
 #searchform h2 {
+	
 }
 
 #s {
@@ -308,7 +306,6 @@ img.right {
 	color: #CCCCCC;
 }
 /* Calendar */
-
 #calendar_wrap {
 	padding: 0 15px;
 	text-align: center;
@@ -319,9 +316,11 @@ img.right {
 }
 
 #calendar_wrap th {
+	
 }
 
 #calendar_wrap td {
+	
 }
 
 #calendar_wrap tfoot td {
@@ -349,9 +348,7 @@ img.right {
 }
 
 /* Footer */
-
 #footer {
-	width: 960px;
 	height: 70px;
 	margin: 0 auto;
 	padding: 0 20px;
@@ -365,6 +362,7 @@ img.right {
 }
 
 #footer a {
+	
 }
 
 #footer .link {
@@ -380,39 +378,39 @@ img.right {
 }
 
 .homeMenu {
-	width:200px;
-	float:left;
-	margin-right:10px
+	width: 200px;
+	float: left;
+	margin-right: 10px
 }
 
 .new {
-    color: #FF9900 !important;
-    font-weight: bold;
-    display:block;
+	color: #FF9900 !important;
+	font-weight: bold;
+	display: block;
 }
 
 .ui-widget {
-    font-size: 98% !important;
+	font-size: 98% !important;
 }
 
 .ui-growl {
-    top:115px !important;
+	top: 115px !important;
 }
 
 .themeMenu {
-    overflow: auto;
-    height:300px;
-    width:200px;
+	overflow: auto;
+	height: 300px;
+	width: 200px;
 }
 
 .sidebar .wijmo-wijmenu a {
-    text-decoration: none !important;
+	text-decoration: none !important;
 }
 
 .dp-xml {
-    width:1000px;
+	width: 1000px;
 }
 
 .ui-themeswitcher a.ui-selectonemenu-label-container {
-    text-decoration: none !important;
+	text-decoration: none !important;
 }
