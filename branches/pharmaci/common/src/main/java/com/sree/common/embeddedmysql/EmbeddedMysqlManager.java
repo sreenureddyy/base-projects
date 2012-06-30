@@ -1,6 +1,6 @@
 /**
  * 
- */
+ *//*
 package com.sree.common.embeddedmysql;
 
 import java.io.File;
@@ -20,13 +20,13 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import com.mysql.management.MysqldResource;
 import com.mysql.management.MysqldResourceI;
  
-/**
+*//**
  * Manages the life cycle of the embedded MySQL database.
  * This manager uses the MySQL Connector/MXJ and Mysql Connector/J JDBC driver to manage the
  * embedded MySQL DB instance.
  *
  * @see http://dev.mysql.com/doc/refman/5.1/en/connector-mxj.html for more details
- */
+ *//*
 public class EmbeddedMysqlManager {
     private Logger logger = Logger.getLogger(EmbeddedMysqlManager.class);
     private MysqldResource mysqldResource;
@@ -39,10 +39,10 @@ public class EmbeddedMysqlManager {
     private DriverManagerDataSource datasource;
  
     //-------------------------------------------------------------------------
-    /**
+    *//**
      * Starts the mysql database
      * @return
-     */
+     *//*
     public void startDatabase() {
         if (logger.isDebugEnabled()) {
             logger.debug("=============== Starting Embedded MySQL using these parameters ===============");
@@ -79,7 +79,7 @@ public class EmbeddedMysqlManager {
  
         logger.info("MySQL started successfully @ " + System.currentTimeMillis());
  
-        /*try {
+        try {
             if (!sqlScripts.isEmpty()) {
                 SimpleJdbcTemplate simpleJdbcTemp = new SimpleJdbcTemplate(getDatasource());
                 logger.info("Executing scripts...");
@@ -96,26 +96,26 @@ public class EmbeddedMysqlManager {
             if ((mysqldResource != null) && (mysqldResource.isRunning())) {
                 shutdownDatabase();
             }
-        }*/
+        }
     }
  
     public void shutdownDatabase() {
         mysqldResource.shutdown();
         logger.debug("=============== MySQL shutdown successfully ===============");
-        /*if (mysqldResource.isRunning() == false) {
+        if (mysqldResource.isRunning() == false) {
             logger.info(">>>>>>>>>> DELETING MYSQL BASE DIR [" + mysqldResource.getBaseDir() + "] <<<<<<<<<<");
             try {
                 FileUtils.forceDelete(mysqldResource.getBaseDir());
             } catch (IOException e) {
                 logger.error(e.getMessage(), e);
             }
-        }*/
+        }
     }
  
-    /**
+    *//**
      * Gets a {@link DataSource} for the embedded DB managed by this manager
      * @return
-     */
+     *//*
     public DataSource getDatasource() {
         if (!mysqldResource.isRunning()) {
             logger.error("MySQL instance not found... Terminating");
@@ -157,87 +157,87 @@ public class EmbeddedMysqlManager {
     }
     
     //-------------------------------------------------------------------------
-    /**
+    *//**
      * @return the baseDatabaseDir
-     */
+     *//*
     public final String getBaseDatabaseDir() {
         return baseDatabaseDir;
     }
  
-    /**
+    *//**
      * @param baseDatabaseDir the baseDatabaseDir to set
-     */
+     *//*
     public final void setBaseDatabaseDir(String baseDatabaseDir) {
         this.baseDatabaseDir = baseDatabaseDir;
     }
  
-    /**
+    *//**
      * @return the databaseName
-     */
+     *//*
     public final String getDatabaseName() {
         return databaseName;
     }
  
-    /**
+    *//**
      * @param databaseName the databaseName to set
-     */
+     *//*
     public final void setDatabaseName(String databaseName) {
         this.databaseName = databaseName;
     }
  
-    /**
+    *//**
      * @return the port
-     */
+     *//*
     public final int getPort() {
         return port;
     }
  
-    /**
+    *//**
      * @param port the port to set
-     */
+     *//*
     public final void setPort(int port) {
         this.port = port;
     }
  
-    /**
+    *//**
      * @return the username
-     */
+     *//*
     public final String getUsername() {
         return username;
     }
  
-    /**
+    *//**
      * @param username the username to set
-     */
+     *//*
     public final void setUsername(String username) {
         this.username = username;
     }
  
-    /**
+    *//**
      * @return the password
-     */
+     *//*
     public final String getPassword() {
         return password;
     }
  
-    /**
+    *//**
      * @param password the password to set
-     */
+     *//*
     public final void setPassword(String password) {
         this.password = password;
     }
  
-    /**
+    *//**
      * @return the sqlScripts
-     */
+     *//*
     public final List<String> getSqlScripts() {
         return sqlScripts;
     }
  
-    /**
+    *//**
      * @param sqlScripts the sqlScripts to set
-     */
+     *//*
     public final void setSqlScripts(List<String> sqlScripts) {
         this.sqlScripts = sqlScripts;
     }
-}
+}*/
