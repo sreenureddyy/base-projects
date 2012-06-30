@@ -60,7 +60,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.16</version>
 		</dependency>
-		<dependency>
+		<!-- dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-mxj</artifactId>
 			<version>5.0.12</version>
@@ -75,6 +75,6 @@
 					<artifactId>mysql-connector-mxj-db-files</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency-->
 	</dependencies>
 </project>
