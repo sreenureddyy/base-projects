@@ -20,14 +20,17 @@
      Documentation at /docs/config/server.html
  -->
 <Server port="8005" shutdown="SHUTDOWN">
-
+  <!-- Security listener. Documentation at /docs/config/listeners.html
+  <Listener className="org.apache.catalina.security.SecurityListener" />
+  -->
   <!--APR library loader. Documentation at /docs/apr.html -->
   <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" />
   <!--Initialize Jasper prior to webapps are loaded. Documentation at /docs/jasper-howto.html -->
   <Listener className="org.apache.catalina.core.JasperListener" />
-  <!-- JMX Support for the Tomcat server. Documentation at /docs/non-existent.html -->
-  <Listener className="org.apache.catalina.mbeans.ServerLifecycleListener" />
+  <!-- Prevent memory leaks due to use of particular java/javax APIs-->
+  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" />
   <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
+  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
 
   <!-- Global JNDI resources
        Documentation at /docs/jndi-resources-howto.html
@@ -37,29 +40,28 @@
          UserDatabaseRealm to authenticate users
     -->
     <Resource name="UserDatabase" auth="Container"
-              type="org.apache.catalina.UserDatabase"
-              description="User database that can be updated and saved"
-              factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
-              pathname="conf/tomcat-users.xml" />
-			  
-	<Resource name="jdbc/sreedb" type="javax.sql.DataSource"
+            type="org.apache.catalina.UserDatabase"
+            description="User database that can be updated and saved"
+            factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+            pathname="conf/tomcat-users.xml" />
+	
+	<Resource name="jdbc/mysqldb" type="javax.sql.DataSource"
 			maxActive="50" maxIdle="20" maxWait="5000" validationQuery="select 1 from dual"
 			removeAbandoned="true" logAbandoned="true"
 			driverClassName="com.mysql.jdbc.Driver"
-			username="root" password="1250"
-			url="jdbc:mysql://localhost:3306/sree"/>
+			username="sree" password="sree"
+			url="jdbc:mysql://localhost:3306/project"/>
 	
-	<Resource
-        name="jms/ConnectionFactory"
-        auth="Container"
-        type="org.apache.activemq.ActiveMQConnectionFactory"
-        description="JMS Connection Factory"
-        factory="org.apache.activemq.jndi.JNDIReferenceFactory"
-        brokerURL="vm://localhost"
-        brokerName="LocalActiveMQBroker"
-        useEmbeddedBroker="false"/>
-	
-	</GlobalNamingResources>
+	<Resource name="jms/ConnectionFactory"
+			auth="Container"
+			type="org.apache.activemq.ActiveMQConnectionFactory"
+			description="JMS Connection Factory"
+			factory="org.apache.activemq.jndi.JNDIReferenceFactory"
+			brokerURL="vm://localhost"
+			brokerName="LocalActiveMQBroker"
+			useEmbeddedBroker="false"/>
+				
+  </GlobalNamingResources>
 
   <!-- A "Service" is a collection of one or more "Connectors" that share
        a single "Container" Note:  A "Service" is not itself a "Container", 
@@ -82,7 +84,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL HTTP/1.1 Connector on port 8080
     -->
-    <Connector port="8180" protocol="HTTP/1.1" 
+    <Connector port="8080" protocol="HTTP/1.1" 
                connectionTimeout="20000" 
                redirectPort="8443" />
     <!-- A "Connector" using the shared thread pool-->
@@ -124,26 +126,19 @@
       <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/>
       -->        
 
-      <!-- The request dumper valve dumps useful debugging information about
-           the request and response data received and sent by Tomcat.
-           Documentation at: /docs/config/valve.html -->
-      <!--
-      <Valve className="org.apache.catalina.valves.RequestDumperValve"/>
-      -->
+      <!-- Use the LockOutRealm to prevent attempts to guess user passwords
+           via a brute-force attack -->
+      <Realm className="org.apache.catalina.realm.LockOutRealm">
+        <!-- This Realm uses the UserDatabase configured in the global JNDI
+             resources under the key "UserDatabase".  Any edits
+             that are performed against this UserDatabase are immediately
+             available for use by the Realm.  -->
+        <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+               resourceName="UserDatabase"/>
+      </Realm>
 
-      <!-- This Realm uses the UserDatabase configured in the global JNDI
-           resources under the key "UserDatabase".  Any edits
-           that are performed against this UserDatabase are immediately
-           available for use by the Realm.  -->
-      <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
-             resourceName="UserDatabase"/>
-
-      <!-- Define the default virtual host
-           Note: XML Schema validation will not work with Xerces 2.2.
-       -->
       <Host name="localhost"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true"
-            xmlValidation="false" xmlNamespaceAware="false">
+            unpackWARs="true" autoDeploy="true">
 
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->
@@ -152,21 +147,23 @@
         -->
 
         <!-- Access log processes all example.
-             Documentation at: /docs/config/valve.html -->
-        <!--
+             Documentation at: /docs/config/valve.html
+             Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"  
-               prefix="localhost_access_log." suffix=".txt" pattern="common" resolveHosts="false"/>
-        -->
-		<Context path="/liveschool-1.0" reloadable="false" debug="0" docBase="liveschool-1.0" antiResourceLocking="true">
-			<ResourceLink name="jdbc/sreedb"
-                       type="javax.sql.DataSource"
-                       global="jdbc/sreedb"/>
+               prefix="localhost_access_log." suffix=".txt"
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" resolveHosts="false"/>
+		
+		<Context path="/project" reloadable="false" debug="0" docBase="project" antiResourceLocking="false">
+			<ResourceLink name="jdbc/mysqldb"
+                type="javax.sql.DataSource"
+                global="jdbc/mysqldb"/>
 			
 			<ResourceLink name="jms/ConnectionFactory"
-                       type="org.apache.activemq.ActiveMQConnectionFactory"
-                       global="jms/ConnectionFactory"/>
-	
+                type="javax.jms.ConnectionFactory"
+                global="jms/ConnectionFactory"/>
+				
 		</Context>
+
       </Host>
     </Engine>
   </Service>
