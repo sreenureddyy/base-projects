@@ -66,8 +66,8 @@
 									ANT TASK - Deploying war to
 									Tomcat...
 								</echo>
-								<copy file="${basedir}/target/project.war" todir="${env.TOMCAT_HOME}/webapps" />
-								<delete dir="${env.TOMCAT_HOME}/webapps/project" />
+								<copy file="${basedir}/target/project.war" todir="/home/sree/Java/apache-tomcat-7.0.28/webapps" />
+								<delete dir="/home/sree/Java/apache-tomcat-7.0.28/webapps/project" />
 							</tasks>
 						</configuration>
 						<goals>
@@ -338,12 +338,12 @@
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-core</artifactId>
-			<version>5.2.0.Final</version>
+			<version>5.4.0.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-decisiontables</artifactId>
-			<version>5.2.0.Final</version>
+			<version>5.4.0.Final</version>
 		</dependency>
 
 		<dependency>

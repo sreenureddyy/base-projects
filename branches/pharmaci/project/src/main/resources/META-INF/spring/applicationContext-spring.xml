@@ -51,14 +51,14 @@
 	<!-- Note : DO NOT include "-" in the DB name. -->
 	<!-- For example, test-db is INVALID, use test_db instead -->
 	<!-- ====================================================================== -->
-	<bean id="embeddedMysqlManager" class="com.sree.common.embeddedmysql.EmbeddedMysqlManager"
+	<!-- bean id="embeddedMysqlManager" class="com.sree.common.embeddedmysql.EmbeddedMysqlManager"
 		init-method="startDatabase" destroy-method="shutdownDatabase">
-		<!-- property name="sqlScripts">
+		<property name="sqlScripts">
 			<list>
 				<value>schema.sql</value> <value>data.sql</value>
 			</list>
-		</property-->
-	</bean>
+		</property>
+	</bean-->
 
 	<bean id="userAuthentication" class="com.sree.base.service.security.UserAuthentication">
 	</bean>
