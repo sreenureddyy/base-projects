@@ -78,16 +78,14 @@ public class User extends BaseDomain implements UserDetails {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private LookupValue userType = new LookupValue();
 
-	
-	 @JoinColumn(name = "USER_ID")
-	 @OneToMany(cascade = CascadeType.ALL) 
-	 private List<UserAuthority> userAuthorities = new ArrayList<UserAuthority>();
-	
+	@JoinColumn(name = "USER_ID")
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<UserAuthority> userAuthorities = new ArrayList<UserAuthority>();
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "USER_ADDRESS", joinColumns = { @JoinColumn(name = "USER") }, inverseJoinColumns = { @JoinColumn(name = "ADDRESS") })
 	List<Address> address = new ArrayList<Address>();
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "USER_CONTACTS", joinColumns = { @JoinColumn(name = "USER") }, inverseJoinColumns = { @JoinColumn(name = "CONTACT_DETAILS") })
 	List<ContactDetails> contactDetails = new ArrayList<ContactDetails>();
@@ -238,7 +236,7 @@ public class User extends BaseDomain implements UserDetails {
 	public void setContactDetails(List<ContactDetails> contactDetails) {
 		this.contactDetails = contactDetails;
 	}
-	
+
 	public List<UserAuthority> getUserAuthorities() {
 		return userAuthorities;
 	}
