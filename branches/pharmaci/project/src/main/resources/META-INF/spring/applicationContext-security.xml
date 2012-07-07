@@ -17,7 +17,7 @@
 			default-target-url="/pages/loading.jsp" />
 		<security:logout invalidate-session="true" logout-url="/spring/logout"
 			logout-success-url="/login.jsf" />
-		<security:remember-me />
+		<security:remember-me key="01091a1250" token-validity-seconds="600000"/>
 	</security:http>
 
 	<security:authentication-manager alias="authenticationManager">

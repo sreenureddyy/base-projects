@@ -52,7 +52,7 @@ public class ICDCodeInsertSql extends BaseTest {
 			ICDCode code = new ICDCode();
 			while (line != null) {
 				log.info("------------------------------------------------\n");
-				//out.write("------------------------------------------------\n");
+				//out.write("------------------------------------------------\n"); 
 				//out.write(line + "\n");
 				//code.setId(new Long(count));
 				code.setCreatedBy("admin");
