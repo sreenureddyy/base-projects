@@ -19,6 +19,7 @@ import javax.persistence.Table;
 @Table(name="CURRENCY")
 public class Currency extends BaseDomain {
 	@Id
+	@Column(name = "CURRENCY_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	

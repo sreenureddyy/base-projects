@@ -22,6 +22,7 @@ import javax.persistence.Table;
 public class ContactDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "CONTACT_DETAILS_ID")
 	private Long id;
 	
 	@Column(name="CONTACT")

@@ -23,6 +23,7 @@ import javax.persistence.Table;
 public class Address extends BaseDomain {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ADDRESS_ID")
 	private Long id;
 	
 	@Column(name="HOUSE_NO")
