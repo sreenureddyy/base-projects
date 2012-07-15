@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.sree.base.domain.User;
 import com.sree.base.service.BaseService;
 import com.sree.base.service.IBaseService;
 
@@ -29,6 +30,16 @@ public class UserService extends BaseService implements IUserService {
 	@Override
 	public List<?> getUser(String queryName, Object... objects) {
 		return baseService.find(queryName, objects);
+	}
+
+	@Override
+	public void saveUser(User user) {
+		baseService.save(user);
+	}
+
+	@Override
+	public void deleteUser(User user) {
+		baseService.delete(user);		
 	}
 
 }
