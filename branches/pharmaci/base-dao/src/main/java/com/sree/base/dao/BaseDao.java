@@ -60,7 +60,8 @@ public class BaseDao implements IBaseDao {
 	 */
 	@Override
 	public void delete(Object object) {
-		getSession().delete(object);
+		object = entityManager.merge(object);
+		entityManager.remove(object);
 	}
 
 	/*
