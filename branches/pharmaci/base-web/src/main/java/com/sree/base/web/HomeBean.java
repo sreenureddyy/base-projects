@@ -13,9 +13,10 @@ import org.springframework.stereotype.Component;
 import com.sree.base.domain.User;
 import com.sree.base.service.BaseService;
 import com.sree.base.service.IBaseService;
+import com.sree.service.user.IUserService;
 
 /**
- * @author IB0765
+ * @author sree
  * 
  */
 @Component("homeBean")
@@ -23,15 +24,12 @@ import com.sree.base.service.IBaseService;
 public class HomeBean extends BaseBean {
 	private List<User> userList = new ArrayList<User>();
 
-	@Autowired
 	private IBaseService baseService;
-
-	public IBaseService getBaseService() {
-		return baseService;
-	}
-
-	public void setBaseService(IBaseService baseService) {
+	
+	@Autowired
+	public HomeBean(IBaseService baseService) {
 		this.baseService = baseService;
+		userList = baseService.find("getAllUsers", new Object[] {});
 	}
 
 	public void doSomeThing() {
@@ -39,7 +37,6 @@ public class HomeBean extends BaseBean {
 	}
 
 	public List<User> getUserList() {
-		userList = baseService.find("getAllUsers", new Object[] {});
 		return userList;
 	}
 

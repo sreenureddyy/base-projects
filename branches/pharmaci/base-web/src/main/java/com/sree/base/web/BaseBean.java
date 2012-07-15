@@ -48,6 +48,10 @@ public class BaseBean implements Serializable{
 		return (UserDetails) SecurityContextHolder.getContext()
 				.getAuthentication().getPrincipal();
 	}
+	
+	public String getUsername(){
+		return getUser().getUsername();
+	}
 
 	public List<SelectItem> populate(List selectItemList) {
 		if (selectItemList == null) {
@@ -55,7 +59,7 @@ public class BaseBean implements Serializable{
 					"selectItemList should not be null");
 		}
 		List<SelectItem> selectItem = new ArrayList<SelectItem>();
-		selectItem.add(new SelectItem("", getText("dropdown.select")));
+		//selectItem.add(new SelectItem("", getText("dropdown.select")));
 		Object[] object = null;
 		for (int i = 0; i < selectItemList.size(); i++) {
 			object = (Object[]) selectItemList.get(i);
@@ -70,7 +74,7 @@ public class BaseBean implements Serializable{
 					"selectItemList should not be null");
 		}
 		List<SelectItem> selectItem = new ArrayList<SelectItem>();
-		selectItem.add(new SelectItem("", getText("dropdown.select")));
+		//selectItem.add(new SelectItem("", getText("dropdown.select")));
 		Object[] object = null;
 		for (int i = 0; i < selectItemList.size(); i++) {
 			object = (Object[]) selectItemList.get(i);
