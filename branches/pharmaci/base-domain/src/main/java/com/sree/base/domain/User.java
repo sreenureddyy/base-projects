@@ -74,9 +74,9 @@ public class User extends BaseDomain implements UserDetails {
 	@Column(name = "ENABLED")
 	private Boolean enabled = true;
 
-	@JoinColumn(name = "USER_TYPE")
+	/*@JoinColumn(name = "USER_TYPE")
 	@ManyToOne(cascade = CascadeType.ALL)
-	private LookupValue userType = new LookupValue();
+	private LookupValue userType = new LookupValue();*/
 
 	@JoinColumn(name = "USER_ID")
 	@OneToMany(cascade = CascadeType.ALL)
@@ -221,13 +221,13 @@ public class User extends BaseDomain implements UserDetails {
 		this.dob = dob;
 	}
 
-	public LookupValue getUserType() {
+	/*public LookupValue getUserType() {
 		return userType;
 	}
 
 	public void setUserType(LookupValue userType) {
 		this.userType = userType;
-	}
+	}*/
 
 	public List<ContactDetails> getContactDetails() {
 		return contactDetails;

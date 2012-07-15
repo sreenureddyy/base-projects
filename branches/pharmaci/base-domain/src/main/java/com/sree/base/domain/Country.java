@@ -3,45 +3,49 @@
  */
 package com.sree.base.domain;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
  * @author Sree
- *
+ * 
  */
+
+@NamedQueries({ @NamedQuery(name = "getAllCountries", query = "from Country country") })
 @SuppressWarnings("serial")
 @Entity
-@Table(name="COUNTRY")
+@Table(name = "COUNTRY")
 public class Country extends BaseDomain {
-	
+
 	@Id
 	@Column(name = "COUNTRY_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@Column(name="COUNTRY_NAME")
+
+	@Column(name = "COUNTRY_NAME")
 	private String countryName;
-	
-	@Column(name="COUNTRY_CODE")
+
+	@Column(name = "COUNTRY_CODE")
 	private String countryCode;
-	
-	@Column(name="PHONE_CODE")
+
+	@Column(name = "PHONE_CODE")
 	private String phoneCode;
-	
-	@Column(name="IS_DEFAULT")
-	private Boolean isDefault  = false;
-	
-	@JoinColumn(name = "CURRENCY")
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Currency currency = new Currency();
+
+	@Column(name = "IS_DEFAULT")
+	private Boolean isDefault = false;
+
+	/*
+	 * @JoinColumn(name = "CURRENCY")
+	 * 
+	 * @ManyToOne(cascade = CascadeType.ALL) private Currency currency = new
+	 * Currency();
+	 */
 
 	public Long getId() {
 		return id;
@@ -83,13 +87,9 @@ public class Country extends BaseDomain {
 		this.isDefault = isDefault;
 	}
 
-	public Currency getCurrency() {
-		return currency;
-	}
-
-	public void setCurrency(Currency currency) {
-		this.currency = currency;
-	}
-	
-	
+	/*
+	 * public Currency getCurrency() { return currency; }
+	 * 
+	 * public void setCurrency(Currency currency) { this.currency = currency; }
+	 */
 }
