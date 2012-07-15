@@ -46,7 +46,7 @@ public class TestUser extends BaseTest {
 		user.setLastname("reddy");
 		user.setPassword(CommonUtil.encript("sree"));
 		LookupValue lookupValue = (LookupValue)baseService.find(LookupValue.class, 1l);
-		user.setUserType(lookupValue);
+		//user.setUserType(lookupValue);
 		
 		Address address = new Address();
 		address.setAddressType(lookupValue);
