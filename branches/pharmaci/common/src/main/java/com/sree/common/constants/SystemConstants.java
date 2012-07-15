@@ -16,7 +16,7 @@ public enum SystemConstants {
 			List<Object[]> list = new ArrayList<Object[]>();
 			list.add(new Object[] { new Integer(1), "Male" });
 			list.add(new Object[] { new Integer(2), "Female" });
-			list.add(new Object[] { new Integer(2), "Others" });
+			list.add(new Object[] { new Integer(3), "Others" });
 			return list;
 		}
 	},
@@ -26,7 +26,28 @@ public enum SystemConstants {
 			List<Object[]> list = new ArrayList<Object[]>();
 			list.add(new Object[] { new Integer(1), "Mr." });
 			list.add(new Object[] { new Integer(2), "Mrs." });
-			list.add(new Object[] { new Integer(2), "Ms." });
+			list.add(new Object[] { new Integer(3), "Ms." });
+			return list;
+		}
+	},
+	
+	ADDRESS_TYPE {
+		public List<Object[]> getEnumConstants() {
+			List<Object[]> list = new ArrayList<Object[]>();
+			list.add(new Object[] { new Integer(1), "Communication Address" });
+			list.add(new Object[] { new Integer(2), "Permanent Address" });
+			list.add(new Object[] { new Integer(3), "Office Address" });
+			return list;
+		}
+	},
+	
+	CONTACT_TYPE {
+		public List<Object[]> getEnumConstants() {
+			List<Object[]> list = new ArrayList<Object[]>();
+			list.add(new Object[] { new Integer(1), "E-Mail" });
+			list.add(new Object[] { new Integer(2), "Mobile" });
+			list.add(new Object[] { new Integer(3), "Phone" });
+			list.add(new Object[] { new Integer(4), "Fax" });
 			return list;
 		}
 	},
@@ -34,9 +55,9 @@ public enum SystemConstants {
 	PAYMENT_MODE {
 		public List<Object[]> getEnumConstants() {
 			List<Object[]> list = new ArrayList<Object[]>();
-			list.add(new Object[] { "Cash", "Cash" });
-			list.add(new Object[] { "Cheque", "Cheque" });
-			list.add(new Object[] { "DD", "DD" });
+			list.add(new Object[] { new Integer(1), "Cash" });
+			list.add(new Object[] { new Integer(2), "Cheque" });
+			list.add(new Object[] { new Integer(3), "DD" });
 			return list;
 		}
 	},
@@ -44,42 +65,42 @@ public enum SystemConstants {
 	BILLING_FREQUENCY {
 		public List<Object[]> getEnumConstants() {
 			List<Object[]> list = new ArrayList<Object[]>();
-			list.add(new Object[] { "Fortnightly", "Fortnightly" });
-			list.add(new Object[] { "Monthly", "Monthly" });
-			list.add(new Object[] { "Quaterly", "Quaterly" });
-			list.add(new Object[] { "Half Yearly", "Half Yearly" });
-			list.add(new Object[] { "Yearly", "Yearly" });
+			list.add(new Object[] { new Integer(1), "Fortnightly" });
+			list.add(new Object[] { new Integer(2), "Monthly" });
+			list.add(new Object[] { new Integer(3), "Quaterly" });
+			list.add(new Object[] { new Integer(4), "Half Yearly" });
+			list.add(new Object[] { new Integer(5), "Yearly" });
 			return list;
 		}
 	},
 	TRANSPORTATION_TYPE {
 		public List<Object[]> getEnumConstants() {
 			List<Object[]> list = new ArrayList<Object[]>();
-			list.add(new Object[] { "1", "Own Transport" });
-			list.add(new Object[] { "2", "Hire Transport" });
+			list.add(new Object[] { new Integer(1), "Own Transport" });
+			list.add(new Object[] { new Integer(2), "Hire Transport" });
 			return list;
 		}
 	},
 	TRANSPORTMODE_TYPE {
 		public List<Object[]> getEnumConstants() {
 			List<Object[]> list = new ArrayList<Object[]>();
-			list.add(new Object[] { "1", "By Air" });
-			list.add(new Object[] { "2", "By Road" });
-			list.add(new Object[] { "3", "By Rail" });
-			list.add(new Object[] { "4", "By Sea" });
+			list.add(new Object[] { new Integer(1), "By Air" });
+			list.add(new Object[] { new Integer(2), "By Road" });
+			list.add(new Object[] { new Integer(3), "By Rail" });
+			list.add(new Object[] { new Integer(4), "By Sea" });
 			return list;
 		}
 	},
 	CALENDAR_WEEK_TYPE {
 		public List<Object[]> getEnumConstants() {
 			List<Object[]> list = new ArrayList<Object[]>();
+			list.add(new Object[] { new Integer(1), "Sunday" });
 			list.add(new Object[] { new Integer(2), "Monday" });
 			list.add(new Object[] { new Integer(3), "Tuesday" });
 			list.add(new Object[] { new Integer(4), "Wednesday" });
 			list.add(new Object[] { new Integer(5), "Thursday" });
 			list.add(new Object[] { new Integer(6), "Friday" });
 			list.add(new Object[] { new Integer(7), "Saturday" });
-			list.add(new Object[] { new Integer(1), "Sunday" });
 			return list;
 		}
 	},
@@ -130,12 +151,13 @@ public enum SystemConstants {
 			return list;
 		}
 	},
+	
 	BANK_ACCOUNT_TYPE {
 		public List<Object[]> getEnumConstants() {
 			List<Object[]> list = new ArrayList<Object[]>();
-			list.add(new Object[] { "1", "Saving Bank" });
-			list.add(new Object[] { "2", "Current Account" });
-			list.add(new Object[] { "3", "Over Draft" });
+			list.add(new Object[] { new Integer(1), "Saving Bank" });
+			list.add(new Object[] { new Integer(2), "Current Account" });
+			list.add(new Object[] { new Integer(3), "Over Draft" });
 			return list;
 		}
 	},
@@ -143,9 +165,9 @@ public enum SystemConstants {
 	INSTRUMENTS_TYPE {
 		public List<Object[]> getEnumConstants() {
 			List<Object[]> list = new ArrayList<Object[]>();
-			list.add(new Object[] { "CASH", "CASH" });
-			list.add(new Object[] { "DD", "DD" });
-			list.add(new Object[] { "CHEQUE", "CHEQUE" });
+			list.add(new Object[] { new Integer(1), "CASH" });
+			list.add(new Object[] { new Integer(2), "DD" });
+			list.add(new Object[] { new Integer(3), "CHEQUE" });
 			return list;
 		}
 	},
@@ -153,10 +175,10 @@ public enum SystemConstants {
 	BILLING_PAYMENT_MODES {
 		public List<Object[]> getEnumConstants() {
 			List<Object[]> list = new ArrayList<Object[]>();
-			list.add(new Object[] { new Integer(14), "Cash" });
-			list.add(new Object[] { new Integer(15), "Cheque" });
-			list.add(new Object[] { new Integer(16), "Credit Card" });
-			list.add(new Object[] { new Integer(17), "Ped" });
+			list.add(new Object[] { new Integer(1), "Cash" });
+			list.add(new Object[] { new Integer(2), "Cheque" });
+			list.add(new Object[] { new Integer(3), "Credit Card" });
+			list.add(new Object[] { new Integer(4), "Ped" });
 			return list;
 		}
 	},
@@ -180,16 +202,7 @@ public enum SystemConstants {
 			list.add(new Object[] { new Integer(4), "Referral" });
 			return list;
 		}
-	},
-	SPONSOR_REFUND_MODE {
-		public List<Object[]> getEnumConstants() {
-			List<Object[]> list = new ArrayList<Object[]>();
-			list.add(new Object[] { new Integer(1), "Cash", "Cash" });
-			list.add(new Object[] { new Integer(2), "Cheque", "Cheque" });
-			list.add(new Object[] { new Integer(3), "DD", "DD" });
-			return list;
-		}
-	};
+	};	
 
 	public abstract List<Object[]> getEnumConstants();
 }
