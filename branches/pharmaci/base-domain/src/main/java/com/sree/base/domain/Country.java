@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * @author Sree
@@ -28,7 +29,7 @@ public class Country extends BaseDomain {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "COUNTRY_NAME")
+	@Column(name = "COUNTRY_NAME", unique=true)
 	private String countryName;
 
 	@Column(name = "COUNTRY_CODE")
