@@ -32,9 +32,9 @@ import org.springframework.web.jsf.FacesContextUtils;
  * 
  */
 @Component("baseBean")
-@Scope(value = "session")
-@SuppressWarnings( { "rawtypes", "serial" })
-public class BaseBean implements Serializable{
+@Scope(value = "request")
+@SuppressWarnings({ "rawtypes", "serial" })
+public class BaseBean implements Serializable {
 	@SuppressWarnings("unused")
 	private String string = new String();
 	private Logger log = Logger.getLogger(BaseBean.class);
@@ -48,8 +48,8 @@ public class BaseBean implements Serializable{
 		return (UserDetails) SecurityContextHolder.getContext()
 				.getAuthentication().getPrincipal();
 	}
-	
-	public String getUsername(){
+
+	public String getUsername() {
 		return getUser().getUsername();
 	}
 
@@ -59,7 +59,7 @@ public class BaseBean implements Serializable{
 					"selectItemList should not be null");
 		}
 		List<SelectItem> selectItem = new ArrayList<SelectItem>();
-		//selectItem.add(new SelectItem("", getText("dropdown.select")));
+		// selectItem.add(new SelectItem("", getText("dropdown.select")));
 		Object[] object = null;
 		for (int i = 0; i < selectItemList.size(); i++) {
 			object = (Object[]) selectItemList.get(i);
@@ -74,7 +74,7 @@ public class BaseBean implements Serializable{
 					"selectItemList should not be null");
 		}
 		List<SelectItem> selectItem = new ArrayList<SelectItem>();
-		//selectItem.add(new SelectItem("", getText("dropdown.select")));
+		// selectItem.add(new SelectItem("", getText("dropdown.select")));
 		Object[] object = null;
 		for (int i = 0; i < selectItemList.size(); i++) {
 			object = (Object[]) selectItemList.get(i);
@@ -113,8 +113,8 @@ public class BaseBean implements Serializable{
 	}
 
 	public ResourceBundle getBundle() {
-		return ResourceBundle.getBundle(getBundleName(), getRequest()
-				.getLocale());
+		return ResourceBundle.getBundle(getBundleName(), FacesContext
+				.getCurrentInstance().getViewRoot().getLocale());
 	}
 
 	private void addFaceMessage(String key, Object arg, String clientId,
