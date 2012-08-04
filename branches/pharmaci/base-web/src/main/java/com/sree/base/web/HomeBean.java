@@ -11,9 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.sree.base.domain.User;
-import com.sree.base.service.BaseService;
 import com.sree.base.service.IBaseService;
-import com.sree.service.user.IUserService;
 
 /**
  * @author sree
@@ -26,6 +24,16 @@ public class HomeBean extends BaseBean {
 
 	private IBaseService baseService;
 	
+	private String getBundleValue;
+	
+	public String getGetBundleValue() {
+		return getBundleValue;
+	}
+
+	public void setGetBundleValue(String getBundleValue) {
+		this.getBundleValue = getBundleValue;
+	}
+
 	@Autowired
 	public HomeBean(IBaseService baseService) {
 		this.baseService = baseService;
@@ -33,7 +41,8 @@ public class HomeBean extends BaseBean {
 	}
 
 	public void doSomeThing() {
-
+		getBundleValue = getText("welcome.jsf");
+		System.out.println("Reading Bundle value ::::::: "+getBundleValue);
 	}
 
 	public List<User> getUserList() {

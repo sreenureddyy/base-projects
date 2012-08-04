@@ -22,7 +22,7 @@ import com.sree.service.master.IMasterService;
  */
 @SuppressWarnings({"serial"})
 @Component("countryBean")
-@Scope(value = "session")
+@Scope(value = "request")
 public class CountryBean extends BaseBean {
 	
 	private Logger log = Logger.getLogger(CountryBean.class);
@@ -45,14 +45,19 @@ public class CountryBean extends BaseBean {
 		
 	}
 	
-	public String saveCountry(){
+	public String saveCountry() throws DatabaseException{
 		country.setCreatedBy(getUsername());
 		country.setCreatedDatetime(new Date());
 		log.info("testing mastersevide in Save method "+masterService);
-		masterService.save(country);
 		
+		try{
+			masterService.save(country);
+		}catch(Exception e){
+			e.printStackTrace();
+			//throw new DatabaseException("Unique ID");
+		}
 		country = new Country();
-		
+		populateCountries();
 		return null;
 	}
 	
