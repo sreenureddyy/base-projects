@@ -11,11 +11,19 @@
 
 	<ui:define name="content">
 		<h:form>
+			<h:outputLabel value="#{msg['Country.jsf']} : *" for="txt_countryname"></h:outputLabel>
 			
 			<h:commandButton value="TestJMS"
 				action="#{sendMessageBean.sendMessage}"></h:commandButton>
+				
+				
+			<h:commandButton value="TestJMS"
+				action="#{homeBean.doSomeThing}"></h:commandButton>
+				
 			<br />
 			<h:outputText value="#{droolsBean.amount}" />
+			
+			<h:outputText value="#{homeBean.getBundleValue}" />
 
 			<p:dataTable id="tbl" var="user" value="#{homeBean.userList}"
 				paginator="true" rows="10">
