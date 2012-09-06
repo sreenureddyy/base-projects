@@ -16,3 +16,9 @@ mvn archetype:create -DgroupId=com.sree -DartifactId=maven-project
 5)Add dependency from module1 to the core-module
 6)mvn install
 7)mvn eclipse:eclipse
+
+--------------------------------------
+Install Jar Manually
+--------------------------------------
+mvn install:install-file -Dfile=c:\kaptcha-2.3.jar -DgroupId=com.google.code -DartifactId=kaptcha -Dversion=2.3 -Dpackaging=jar
+
