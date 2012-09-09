@@ -1,7 +1,7 @@
 package com.sree.common.exception;
 
+@SuppressWarnings("serial")
 public class IntegrationServiceException extends ApplicationServiceException {
-	private static final long serialVersionUID = -7751802132429004824L;
 
 	public IntegrationServiceException() {
 		super();

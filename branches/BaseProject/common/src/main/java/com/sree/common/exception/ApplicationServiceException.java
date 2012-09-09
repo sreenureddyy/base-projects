@@ -2,12 +2,8 @@ package com.sree.common.exception;
 
 
 
+@SuppressWarnings("serial")
 public class ApplicationServiceException extends BaseException {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5925303829509080814L;
 
 	public ApplicationServiceException() {
 		super();
