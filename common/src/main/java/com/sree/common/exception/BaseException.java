@@ -1,9 +1,8 @@
 package com.sree.common.exception;
 
+@SuppressWarnings("serial")
 public class BaseException extends Exception {
 	
-	private static final long serialVersionUID = 3824140957216582208L;
-
 	private String errorCode;
 	
 	public BaseException() {
