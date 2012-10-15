@@ -3,9 +3,6 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<query name="getusers">
-		<![CDATA[ select user.username from com.sree.base.domain.User user where user.id = 1]]>
-	</query>
 	
 	<query name="getAllUsers">
 		<![CDATA[ select user from com.sree.base.domain.User user ]]>
