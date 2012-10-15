@@ -28,21 +28,25 @@
 
 	<build>
 		<plugins>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
+				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<packagingExcludes>
-						WEB-INF/lib/slf4j*.jar
-					</packagingExcludes>
-					<webXml>
-						${basedir}/src/main/webapp/WEB-INF/web.xml
-					</webXml>
-					<warName>project</warName>
-					<warSourceDirectory>
-						src/main/webapp
-					</warSourceDirectory>
+					<skip>true</skip>
 				</configuration>
+				<executions>
+					<execution>
+						<id>surefire-it</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<skip>false</skip>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
@@ -62,12 +66,12 @@
 										<include name="WEB-INF/lib/base-*.jar" />
 									</fileset>
 								</copy>
-								<echo>
-									ANT TASK - Deploying war to
-									Tomcat...
-								</echo>
-								<copy file="${basedir}/target/project.war" todir="/home/sree/Java/apache-tomcat-7.0.28/webapps" />
-								<delete dir="/home/sree/Java/apache-tomcat-7.0.28/webapps/project" />
+								<echo> ANT TASK - Deploying war to Tomcat... </echo>
+
+								<copy file="${basedir}/target/project.war" todir="${env.TOMCAT_HOME}/webapps" />
+								<delete dir="${env.TOMCAT_HOME}/webapps/project" />
+
+
 							</tasks>
 						</configuration>
 						<goals>
@@ -76,6 +80,59 @@
 					</execution>
 				</executions>
 			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.0-beta-2</version>
+				<configuration>
+					<reportPlugins>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>findbugs-maven-plugin</artifactId>
+							<version>2.3.2</version>
+							<configuration>
+								<formats>
+									<format>xml</format>
+									<format>html</format>
+								</formats>
+								<canGenerate>true</canGenerate>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-jxr-plugin</artifactId>
+							<version>2.1</version>
+							<configuration>
+								<aggregate>true</aggregate>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-report-plugin</artifactId>
+							<version>2.6</version>
+						</plugin>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>cobertura-maven-plugin</artifactId>
+							<version>2.4</version>
+							<configuration>
+								<formats>
+									<format>xml</format>
+									<format>html</format>
+								</formats>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-checkstyle-plugin</artifactId>
+							<version>2.6</version>
+						</plugin>
+					</reportPlugins>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
@@ -140,8 +197,12 @@
 			<artifactId>junit</artifactId>
 			<version>4.6</version>
 		</dependency>
-		<!-- dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
-			<version>1.4.2</version> </dependency -->
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.6</version>
+		</dependency>
 		<!-- dependency> <groupId>javax.el</groupId> <artifactId>el-api</artifactId> 
 			<scope>provided</scope> </dependency> <dependency> <groupId>javax.servlet</groupId> 
 			<artifactId>jstl</artifactId> </dependency> <dependency> <groupId>net.sf.ehcache</groupId> 
@@ -178,7 +239,7 @@
 		</dependency>
 
 		<!-- Primefaces ends -->
-		
+
 		<!-- JSF dependencies starts -->
 		<!-- dependency> <groupId>javax.faces</groupId> <artifactId>jsf-api</artifactId> 
 			<version>2.0.2-FCS</version> </dependency> <dependency> <groupId>javax.faces</groupId> 
